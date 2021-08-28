@@ -24,4 +24,4 @@ const User = model('User', userSchema);
 
 module.export = User;
 
-// add regex to check email
+// add regex to check email and password
