@@ -45,21 +45,21 @@ const SearchPlants = () => {
     //     `https://www.googleapis.com/books/v1/volumes?q=${searchInput}`
     //   );
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      // if (!response.ok) {
+      //   throw new Error('something went wrong!');
+      // }
 
     //   const { items } = await response.json();
 
-      const plantData = items.map((plant) => ({
-        plantId: plant.id,
-        name: plant.name || ['No name to display'],
-        water: plant.water,
-        pet: plant.pet,
-        image: plant.image,
-      }));
+      // const plantData = items.map((plant) => ({
+      //   plantId: plant.id,
+      //   name: plant.name || ['No name to display'],
+      //   water: plant.water,
+      //   pet: plant.pet,
+      //   image: plant.image,
+      // }));
 
-      setSearchedPlants(plantData);
+      // setSearchedPlants(plantData);
       setSearchInput('');
     } catch (err) {
       console.error(err);
@@ -90,7 +90,7 @@ const SearchPlants = () => {
   };
   return (
     <>
-      <Jumbotron fluid className="text-light bg-dark">
+      <Jumbotron fluid className="text-dark bg-light">
         <Container>
           <h1>Search for Plants!</h1>
           <Form onSubmit={handleFormSubmit}>
