@@ -6,7 +6,6 @@
         "petFriendly": true,
         "plantImage": "",
         "moreInfo": ""
-
     },
 
     {
@@ -26,4 +25,76 @@
         "plantImage": "https://www.plantthefuture.com/wp-content/uploads/2018/10/Pony-Tail-Palm.png",
         "moreInfo": "https://www.almanac.com/plant/ponytail-palms"
     },
+
+    {
+        "plantName": "Spider Plant",
+        "plantLight": "Partial sun, Shade",
+        "plantWater": "1x a week * when soil is dry, distilled water",
+        "petFriendly": true,
+        "plantImage": "https://images.unsplash.com/photo-1572688484438-313a6e50c333?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80",
+        "moreInfo": "https://www.almanac.com/plant/spider-plants"
+    },
+
+    {
+        "plantName": "Golden Pothos Vine",
+        "plantLight": "Full sun, Indirect, Partial shade ",
+        "plantWater": "1-2 weeks * allow soil to dry out between waterings",
+        "petFriendly": false,
+        "plantImage": "https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Golden_Pothos_FGT_600x600_5b8205ba-e962-4b1d-be2a-426f3068f575_grande.jpg?v=1626903728",
+        "moreInfo": "https://www.almanac.com/plant/pothos"
+    },
+    
+    {
+        "plantName": "Snake Plant",
+        "plantLight": "Low Light",
+        "plantWater": "2-3 days * when soil is dry to touch",
+        "petFriendly": false,
+        "plantImage": "https://images.unsplash.com/photo-1599009944997-3544a939813c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
+        "moreInfo": "https://www.almanac.com/plant/snake-plants"
+    },
+
+    {
+        "plantName": "Monstera Deliciosa",
+        "plantLight": "Bright, Indirect * tolerates low light",
+        "plantWater": "every 10-14 days * when topsoil has dried 80%",
+        "petFriendly": false,
+        "plantImage": "https://images.unsplash.com/photo-1605449670493-ca1d812d0488?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1276&q=80",
+        "moreInfo": "https://monsteraplantresource.com/howtowateramonstera/"
+    },
+
+    {
+        "plantName": "Peace Lilies",
+        "plantLight": "Partial sun, Shade",
+        "plantWater": "1-2 weeks * look for drooping leaves",
+        "petFriendly": false,
+        "plantImage": "https://images.unsplash.com/photo-1616690248297-1ec539dd910f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=925&q=80",
+        "moreInfo": "https://www.almanac.com/plant/peace-lilies"
+    },
+
+    {
+        "plantName": "Escheveria Succulents",
+        "plantLight": "Full Sun",
+        "plantWater": "3-4 weeks * allow soil to dry out",
+        "petFriendly": true,
+        "plantImage": "https://images.unsplash.com/photo-1494516192674-b82b5f1e61dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=933&q=80",
+        "moreInfo": "https://www.gardeningknowhow.com/ornamental/cacti-succulents/echeveria/caring-for-echeveria-plants.htm"
+    },
+
+    {
+        "plantName": "African Violet",
+        "plantLight": "Partial Sun",
+        "plantWater": "1x a month",
+        "petFriendly": true,
+        "plantImage": "https://www.almanac.com/sites/default/files/image_nodes/african-violet-houseplant.jpg",
+        "moreInfo": "https://www.almanac.com/plant/african-violets"
+    },
+
+    {
+        "plantName": "English Ivy",
+        "plantLight": "Partial Shade",
+        "plantWater": "5-7 days * keep soil evenly moist ",
+        "petFriendly": false,
+        "plantImage": "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/stock%2FLarge_Download-shutterstock_683937778",
+        "moreInfo": "https://www.almanac.com/plant/english-ivy"
+    }
 ]
