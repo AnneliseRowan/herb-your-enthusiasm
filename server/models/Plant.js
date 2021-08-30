@@ -21,6 +21,14 @@ const plantSchema = new Schema({
         required: true
     },
 
+    plantImage: {
+        type: String
+    },
+
+    moreInfo: {
+        type: String
+    }
+
 });
 
 const Plant = model('Plant', plantSchema);
