@@ -4,7 +4,8 @@
         "plantLight": "",
         "plantWater": "",
         "petFriendly": true,
-        "plantImage": ""
+        "plantImage": "",
+        "moreInfo": ""
 
     },
 
@@ -15,5 +16,14 @@
         "petFriendly": false,
         "plantImage": "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=80",
         "moreInfo": "https://www.almanac.com/plant/aloe-vera"
-    }
+    },
+
+    {
+        "plantName": "PonyTail Palm",
+        "plantLight": "Full sun, Partial sun",
+        "plantWater": "2-3 weeks * allow top 2-3 inches of soil to dry out",
+        "petFriendly": true,
+        "plantImage": "https://www.plantthefuture.com/wp-content/uploads/2018/10/Pony-Tail-Palm.png",
+        "moreInfo": "https://www.almanac.com/plant/ponytail-palms"
+    },
 ]
