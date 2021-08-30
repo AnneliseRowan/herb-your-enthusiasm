@@ -23,6 +23,10 @@ const plantSchema = new Schema({
 
     plantImage: {
         type: String
+    },
+
+    moreInfo: {
+        type: String
     }
 
 });
