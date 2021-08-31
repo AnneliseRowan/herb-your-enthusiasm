@@ -29,6 +29,9 @@ const AppNavbar = () => {
               <Nav.Link style={{color: 'black', fontWeight: 'bold'}} as={Link} to='/search'>
                 Search 🌿
               </Nav.Link>
+              <Nav.Link style={{color: 'black', fontWeight: 'bold'}} as={Link} to='/donate'>
+                Donate 💸
+              </Nav.Link>
               {/* if user is logged in show saved books and logout */}
               {Auth.loggedIn() ? (
                 <>
