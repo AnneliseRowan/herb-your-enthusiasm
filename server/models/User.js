@@ -11,13 +11,18 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    
+    username: {
+        tupe: String,
+        required: true
+    },
 
-    plants: [
-        // do i pull from plant model?????
-        {
-            Plant
-        }
-    ]
+    // plants: [
+    //     // do i pull from plant model?????
+    //     {
+    //         Plant
+    //     }
+    // ]
 });
 
 const User = model('User', userSchema);
