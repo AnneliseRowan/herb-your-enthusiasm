@@ -13,7 +13,7 @@ const userSchema = new Schema({
     },
     
     username: {
-        tupe: String,
+        type: String,
         required: true
     },
 
