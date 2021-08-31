@@ -27,6 +27,6 @@ const profileSchema = new Schema({
 
 const Profile = model('Profile', profileSchema);
 
-module.export = Profile;
+module.exports = Profile;
 
 // add regex to check email

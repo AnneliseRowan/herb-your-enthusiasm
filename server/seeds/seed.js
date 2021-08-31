@@ -6,10 +6,10 @@ const userSeeds = require('./userSeeds.json')
 db.once('open', async () => {
     try {
         await Plant.deleteMany({});
-        // await Profile.deleteMany({})
+        await Profile.deleteMany({})
 
         await Plant.create(plantData)
-        // await Profile.create(userSeeds);
+        await Profile.create(userSeeds);
 
         console.log('all done!');
         process.exit(0);
