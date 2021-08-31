@@ -72,11 +72,11 @@ const SearchPlants = () => {
     const plantToSave = searchedPlants.find((plant) => plant.plantId === plantId);
 
     // get token
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    // const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    if (!token) {
-      return false;
-    }
+    // if (!token) {
+    //   return false;
+    // }
 
     try {
       const { data } = await savePlant({

@@ -24,18 +24,21 @@ const AppNavbar = () => {
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>
               <Nav.Link style={{color: 'black', fontWeight: 'bold'}} as={Link} to='/'>
+                Home 🏠
+              </Nav.Link>
+              <Nav.Link style={{color: 'black', fontWeight: 'bold'}} as={Link} to='/search'>
                 Search 🌿
               </Nav.Link>
               {/* if user is logged in show saved books and logout */}
               {Auth.loggedIn() ? (
                 <>
                   <Nav.Link as={Link} to='/saved'>
-                    See Your Books
+                    See Your Plants
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link style={{color: 'black', fontWeight: 'bold'}} onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+                <Nav.Link style={{color: 'black', fontWeight: 'bold'}} onClick={() => setShowModal(true)}>Login/Sign Up ✍🏻</Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>
