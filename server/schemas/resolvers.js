@@ -2,7 +2,7 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const { Profile, Plant } = require('../models')
 
-// const { signToken } = require('../utils/auth')  this is for JWT
+const { signToken } = require('../utils/auth') 
 
 const resolvers = {
     Query: {
@@ -23,8 +23,8 @@ const resolvers = {
     },
   
     Mutation: {
-      addProfile: async (parent, { name, email, password }) => {
-        const profile = await Profile.create({ name, email, password });
+      addProfile: async (parent, { username, email, password }) => {
+        const profile = await Profile.create({ username, email, password });
         const token = signToken(profile);
   
         return { token, profile };
