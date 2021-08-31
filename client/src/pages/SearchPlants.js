@@ -15,6 +15,9 @@ import { savePlantIds, getSavedPlantIds } from '../utils/localStorage';
 
 import Auth from '../utils/auth';
 
+import './style.css'
+import plant from './plantData'; 
+
 const SearchPlants = () => {
   // create state for holding returned google api data
   const [searchedPlants, setSearchedPlants] = useState([]);
@@ -92,38 +95,12 @@ const SearchPlants = () => {
     <>
       <Jumbotron fluid className="text-dark bg-light">
         <Container>
-          <h1>Search for Plants!</h1>
-          <Form onSubmit={handleFormSubmit}>
-            <Form.Row>
-              <Col xs={12} md={8}>
-                <Form.Control
-                  name="searchInput"
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                  type="text"
-                  size="lg"
-                  placeholder="Search for a Plant"
-                />
-              </Col>
-              <Col xs={12} md={4}>
-                <Button type="submit" variant="success" size="lg">
-                  Submit Search
-                </Button>
-              </Col>
-            </Form.Row>
-          </Form>
+          <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', fontSize: "64px"}}>Our Beautiful Plant Page</h1>
         </Container>
       </Jumbotron>
 
       <Container>
-        <h2>
-          {searchedPlants.length
-            ? `Viewing ${searchedPlants.length} results:`
-            : 'Search for a plant to begin'}
-        </h2>
         <CardColumns>
-          {searchedPlants.map((plant) => {
-            return (
               <Card key={plant.plantId} border="dark">
                 {plant.image ? (
                   <Card.Img
@@ -134,7 +111,9 @@ const SearchPlants = () => {
                 ) : null}
                 <Card.Body>
                   <Card.Title>{plant.name}</Card.Title>
-                  <p className="small">Sun: {plant.water}</p>
+                  <p className="small">Sun: {plant.light}</p>
+                  <p className="small">Water: {plant.water}</p>
+                  <p className="small">Pet-Friendly: {plant.pet}</p>
                   <Card.Text>{plant.sun}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
@@ -151,8 +130,6 @@ const SearchPlants = () => {
                   )}
                 </Card.Body>
               </Card>
-            );
-          })}
         </CardColumns>
       </Container>
     </>
