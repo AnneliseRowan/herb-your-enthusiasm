@@ -1,14 +1,5 @@
 [
     {
-        "plantName": "",
-        "plantLight": "",
-        "plantWater": "",
-        "petFriendly": true,
-        "plantImage": "",
-        "moreInfo": ""
-    },
-
-    {
         "plantName": "Aloe Vera",
         "plantLight": "Full, Direct",
         "plantWater": "2-3 weeks",
