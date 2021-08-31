@@ -17,7 +17,7 @@ const AppNavbar = () => {
     <>
       <Navbar style={{backgroundColor: '#1C3334'}} className="navbar navbar-light static-top shadow" variant='dark' expand='lg'>
         <Container fluid>
-          <Navbar.Brand style={{fontFamily: "Lobster, cursive", fontSize: "36px", color: 'black'}} as={Link} to='/'>
+          <Navbar.Brand style={{fontFamily: "Lobster, cursive", fontSize: "24px", color: 'black'}} as={Link} to='/'>
             HYE
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
