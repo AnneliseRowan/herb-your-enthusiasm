@@ -1,7 +1,7 @@
-import Plant from './Plant';
+// import Plant from './Plant';
 const {Schema, model} = require('mongoose');
 
-const userSchema = new Schema({
+const profileSchema = new Schema({
     email: {
         type: String,
         required: true
@@ -25,8 +25,8 @@ const userSchema = new Schema({
     // ]
 });
 
-const User = model('User', userSchema);
+const Profile = model('Profile', profileSchema);
 
-module.export = User;
+module.export = Profile;
 
 // add regex to check email
