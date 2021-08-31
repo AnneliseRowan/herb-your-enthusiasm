@@ -13,7 +13,11 @@ const userSchema = new Schema({
     },
     
     username: {
+<<<<<<< HEAD
         type: String,
+=======
+        tupe: String,
+>>>>>>> c9fa19d38f6e0dad4fe7e781435b9ff186d9efcc
         required: true
     },
 
