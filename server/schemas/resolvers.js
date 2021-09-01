@@ -9,6 +9,10 @@ const resolvers = {
       profiles: async () => {
         return Profile.find();
       },
+
+      plants: async () => {
+        return Plant.find()
+      },
   
       profile: async (parent, { profileId }) => {
         return Profile.findOne({ _id: profileId });

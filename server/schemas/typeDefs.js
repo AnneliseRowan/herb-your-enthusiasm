@@ -15,6 +15,16 @@ const typeDefs = gql`
     profiles: [Profile]!
     profile(profileId: ID!): Profile    
     me: Profile
+    plants: [Plant]!
+  }
+  type Plant {
+    _id: ID
+    plantName: String
+    plantLight: String
+    plantWater: String
+    petFriendly: Boolean
+    plantImage: String
+    moreInfo: String
   }
   type Mutation {
     addProfile(username: String!, email: String!, password: String!): Auth
