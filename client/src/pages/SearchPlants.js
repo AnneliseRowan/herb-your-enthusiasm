@@ -57,6 +57,7 @@ const SearchPlants = () => {
       // const plantData = items.map((plant) => ({
       //   plantId: plant.id,
       //   name: plant.name || ['No name to display'],
+      //   light: plant.light,
       //   water: plant.water,
       //   pet: plant.pet,
       //   image: plant.image,
