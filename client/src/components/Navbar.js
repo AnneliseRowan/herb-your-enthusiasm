@@ -27,7 +27,7 @@ const AppNavbar = () => {
                 Home 🏠
               </Nav.Link>
               <Nav.Link style={{color: 'black', fontWeight: 'bold'}} as={Link} to='/search'>
-                Search 🌿
+                See Our 🌿
               </Nav.Link>
               <Nav.Link style={{color: 'black', fontWeight: 'bold'}} as={Link} to='/donate'>
                 Donate 💸
