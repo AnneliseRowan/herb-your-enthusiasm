@@ -23,17 +23,16 @@ import plant from './plantData';
 const SearchPlants = () => {
   const { loading, data } = useQuery(QUERY_PLANT); 
 
-  // if (loading) {
-  //   // return <h2>LOADING...</h2>;
-  // } else {
-  //   console.log('dataaaa', data)
-  // }
-  if (!loading) {
-
+  if (loading) {
+    // return <h2>LOADING...</h2>;
+  } else {
+    console.log('dataaaa', data)
+  }
+  
     const userData = data?.plant || []; 
 
     console.log('userDataaa', userData); 
-  }
+  
 
 
   // console.log('plant', data.plant.map((pl) => (
