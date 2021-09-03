@@ -1,6 +1,6 @@
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
-const { Profile, Plant } = require('../models')
+const { Profile, Plant, Userplant } = require('../models')
 
 const { signToken } = require('../utils/auth') 
 
@@ -12,6 +12,10 @@ const resolvers = {
 
       plants: async () => {
         return Plant.find({});
+      },
+      // double check this later when it's working
+      userplants: async () => {
+        return Userplant.find({})
       },
   
       profile: async (parent, { profileId }) => {
