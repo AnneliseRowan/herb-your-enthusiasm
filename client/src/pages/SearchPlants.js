@@ -29,7 +29,7 @@ const SearchPlants = () => {
     console.log('dataaaa', data)
   }
   
-    const userData = data?.plant || []; 
+    const userData = data?.plants || []; 
 
     console.log('userDataaa', userData); 
   
