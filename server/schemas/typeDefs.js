@@ -26,6 +26,17 @@ const typeDefs = gql`
     plantImage: String
     moreInfo: String
   }
+  type Userplant {
+    _id: ID
+    userID: String
+    plantNickName: String
+    plantName: String
+    plantLight: String
+    plantWater: String
+    petFriendly: Boolean
+    plantImage: String
+    moreInfo: String
+  }
   type Mutation {
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
