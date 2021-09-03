@@ -3,17 +3,17 @@
   "name": "Herb Your Enthusiasm",
   "icons": [
     {
-      "src": "./icons/plant-icon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "favicon.ico",
+      "sizes": "16x16",
+      "type": "icon"
     },
     {
-      "src": "./icons/plant-192x192.png",
+      "src": "plant192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "./icons/plant-512x512.png",
+      "src": "plant512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
