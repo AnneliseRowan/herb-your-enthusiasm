@@ -31,7 +31,7 @@ const SearchPlants = () => {
   
     const userData = data?.plants || []; 
 
-    console.log('userDataaa', userData); 
+    // console.log('userDataaa', userData); 
   
 
 
@@ -67,6 +67,7 @@ const SearchPlants = () => {
       });
       console.log('savedPlantIds', savedPlantIds);
       setSavedPlantIds([...savedPlantIds, plantToSave.plantId]);
+      console.log(data, 'data line 70')
     } catch (err) {
       console.error(err);
     }
@@ -76,38 +77,38 @@ const SearchPlants = () => {
     return <h2>LOADING...</h2>;
   }
 
-  return (
+  return ( 
     <>
       <Jumbotron fluid className="text-dark bg-light">
         <Container>
           <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', fontSize: "64px"}}>Our Beautiful Plant Page</h1>
         </Container>
       </Jumbotron>
-
-      <Container>
+      {data.plants.map((plants, i) => (
+        <Container >
         <CardColumns>
-              <Card key={plant.plantId} border="dark">
-                {plant.image ? (
+              <Card key={plants._id} border="dark">
+                {plants.plantImage ? (
                   <Card.Img
-                    src={plant.image}
-                    alt={`The cover for ${plant.name}`}
-                    variant="top"
+                  src={plants.plantImage}
+                  alt={`The cover for ${plants.plantName}`}
+                  variant="top"
                   />
-                ) : null}
+                  ) : null}
                 <Card.Body>
-                  <Card.Title>{plant.name}</Card.Title>
-                  <p className="small">Sun: {plant.light}</p>
-                  <p className="small">Water: {plant.water}</p>
-                  <p className="small">Pet-Friendly: {plant.pet}</p>
-                  <Card.Text>{plant.sun}</Card.Text>
+                  <Card.Title>{plants.plantName}</Card.Title>
+                  <p className="small">Sun: {plants.plantLight}</p>
+                  <p className="small">Water: {plants.plantWater}</p>
+                  <p className="small">Pet-Friendly: {plants.petFriendly}</p>
+                  <Card.Text>{plants.plantLight}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
-                      disabled={savedPlantIds?.some(
-                        (savedId) => savedId === plant.plantId
+                    disabled={savedPlantIds?.some(
+                      (savedId) => savedId === plant.plantId
                       )}
                       className="btn-block btn-info"
                       onClick={() => handleSavePlant(plant.plantId)}
-                    >
+                      >
                       {savedPlantIds?.some((savedId) => savedId === plant.plantId)
                         ? 'Plant Already Saved!'
                         : 'Save This Plant!'}
@@ -117,6 +118,8 @@ const SearchPlants = () => {
               </Card>
         </CardColumns>
       </Container>
+                        ),
+                        console.log(data.plants, 'consolelog 122'))}
     </>
   );
 };
