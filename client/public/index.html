@@ -24,9 +24,20 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script
+      src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
+      async=""
+    ></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function () {
+        OneSignal.init({
+          appId: "0f425915-28ce-4a8c-be0e-0f9812223ca0",
+        });
+      });
+    </script>
 
     <title>Herb Your Enthusiasm</title>
-
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
