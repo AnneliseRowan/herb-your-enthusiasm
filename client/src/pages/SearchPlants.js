@@ -9,8 +9,8 @@ import {
   CardColumns,
 } from 'react-bootstrap';
 
-import { useQuery } from '@apollo/client';
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
+// import { useMutation } from '@apollo/client';
 import { SAVE_PLANT } from '../utils/mutations';
 import { QUERY_PLANT } from '../utils/queries';
 import { savePlantIds, getSavedPlantIds } from '../utils/localStorage';
@@ -28,9 +28,13 @@ const SearchPlants = () => {
   // } else {
   //   console.log('dataaaa', data)
   // }
-  const userData = data?.plants || []; 
+  if (!loading) {
 
-  console.log('userDataaa', userData); 
+    const userData = data?.plant || []; 
+
+    console.log('userDataaa', userData); 
+  }
+
 
   // console.log('plant', data.plant.map((pl) => (
   //   <li key={pl.id}>{pl.plantName}</li>
