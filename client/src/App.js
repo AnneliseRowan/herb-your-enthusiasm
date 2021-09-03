@@ -17,6 +17,7 @@ import SavedPlants from './pages/SavedPlants';
 import Donate from './pages/Donate';
 import Navbar from './components/Navbar';
 
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -42,6 +43,7 @@ const client = new ApolloClient({
 });
 
 function App() {
+
   return (
     <ApolloProvider client={client}>
       <Router>
