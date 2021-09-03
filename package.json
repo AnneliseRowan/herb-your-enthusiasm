@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0",
-    "graphql": "^15.5.1"
+    "graphql": "^15.5.1",
+    "onesignal": "^0.1.2",
+    "onesignal-node": "^3.3.0"
   }
 }
