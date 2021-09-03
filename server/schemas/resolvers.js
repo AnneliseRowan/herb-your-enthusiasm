@@ -11,7 +11,7 @@ const resolvers = {
       },
 
       plants: async () => {
-        return Plant.find()
+        return Plant.find({});
       },
   
       profile: async (parent, { profileId }) => {

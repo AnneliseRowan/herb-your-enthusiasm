@@ -9,8 +9,10 @@ import {
   CardColumns,
 } from 'react-bootstrap';
 
+import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { SAVE_PLANT } from '../utils/mutations';
+import { QUERY_PLANT } from '../utils/queries';
 import { savePlantIds, getSavedPlantIds } from '../utils/localStorage';
 
 import Auth from '../utils/auth';
@@ -19,79 +21,58 @@ import './style.css'
 import plant from './plantData'; 
 
 const SearchPlants = () => {
-  // create state for holding returned google api data
-  const [searchedPlants, setSearchedPlants] = useState([]);
-  // create state for holding our search field data
-  const [searchInput, setSearchInput] = useState('');
+  const { loading, data } = useQuery(QUERY_PLANT); 
 
-  // create state to hold saved plantId values
+  // if (loading) {
+  //   // return <h2>LOADING...</h2>;
+  // } else {
+  //   console.log('dataaaa', data)
+  // }
+  const userData = data?.plants || []; 
+
+  console.log('userDataaa', userData); 
+
+  // console.log('plant', data.plant.map((pl) => (
+  //   <li key={pl.id}>{pl.plantName}</li>
+  // )))
+  
+  const [searchedPlants, setSearchedPlants] = useState([]);
+
   const [savedPlantIds, setSavedPlantIds] = useState(getSavedPlantIds());
 
   const [savePlant, { error }] = useMutation(SAVE_PLANT);
 
-  // set up useEffect hook to save `savedPlantIds` list to localStorage on component unmount
-  // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
     return () => savePlantIds(savedPlantIds);
   });
 
-  // create method to search for plants and set state on form submit
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    if (!searchInput) {
-      return false;
-    }
-
-    try {
-    //   const response = await fetch(
-    //     `https://www.googleapis.com/books/v1/volumes?q=${searchInput}`
-    //   );
-
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
-
-    //   const { items } = await response.json();
-
-      // const plantData = items.map((plant) => ({
-      //   plantId: plant.id,
-      //   name: plant.name || ['No name to display'],
-      //   light: plant.light,
-      //   water: plant.water,
-      //   pet: plant.pet,
-      //   image: plant.image,
-      // }));
-
-      // setSearchedPlants(plantData);
-      setSearchInput('');
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  // create function to handle saving a plant to our database
+  // create function to handle saving a plant to our user
   const handleSavePlant = async (plantId) => {
-    // find the plant in `searchedPlantss` state by the matching id
+    // find the plant in `searchedPlants` state by the matching id
     const plantToSave = searchedPlants.find((plant) => plant.plantId === plantId);
 
-    // get token
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    // if (!token) {
-    //   return false;
-    // }
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
 
     try {
       const { data } = await savePlant({
         variables: { plantData: { ...plantToSave } },
       });
-      console.log(savedPlantIds);
+      console.log('savedPlantIds', savedPlantIds);
       setSavedPlantIds([...savedPlantIds, plantToSave.plantId]);
     } catch (err) {
       console.error(err);
     }
   };
+
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
+
   return (
     <>
       <Jumbotron fluid className="text-dark bg-light">

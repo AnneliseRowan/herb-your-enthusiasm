@@ -20,10 +20,8 @@ const SavedPlants = () => {
   const [removePlant, { error }] = useMutation(REMOVE_PLANT);
 
   const userData = data?.me || {};
-  console.log("dataaaaaaaa", userData)
-  // create function that accepts the plants's mongo _id value as param and deletes the plant from the database
+
   const handleDeletePlant = async (plantId) => {
-    // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
