@@ -10,8 +10,7 @@ const userPlantSchema = new Schema({
         required: true
     },
     plantNickName: {
-        type: String,
-        required: false
+        type: String,        
     },
     
     plantLight: {
