@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_ME = gql`
-  {
+  query me {
     me {
       _id
       username
@@ -12,13 +12,12 @@ export const QUERY_ME = gql`
         sun
         pets
       }
-    }
-  }
+    }}
+  
 `;
 
 export const QUERY_PLANT = gql`
- {
-   query plants {
+    query plants {
     plants {
       _id
       plantName
@@ -27,7 +26,7 @@ export const QUERY_PLANT = gql`
       petFriendly
       plantImage
       moreInfo
-    }  
-  }
- }
+    } 
+     }
+  
 `;
