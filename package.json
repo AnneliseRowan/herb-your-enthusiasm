@@ -7,7 +7,9 @@
     "start": "node server/server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "seed": "cd server && node seeds/seed.js",
+    "production": "NODE_ENV=production node server/server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +18,10 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    "graphql": "^15.5.1"
+    "dotenv": "^10.0.0",
+    "graphql": "^15.5.1",
+    "onesignal": "^0.1.2",
+    "onesignal-node": "^3.3.0",
+    "react-toastify": "^8.0.2"
   }
 }

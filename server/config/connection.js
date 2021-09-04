@@ -1,5 +1,3 @@
-// imported from book-search-engine hw
-
 const mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/herb-your-enthusiasm', {

@@ -1,8 +1,9 @@
 // imported from book-search-engine hw
 
-const User = require('./User');
+const Profile = require('./Profile');
 const Plant = require('./Plant')
+const Userplant = require('./UserPlant')
 
-module.exports = { User, Plant };
+module.exports = { Profile, Plant, Userplant };
 
 // test test

@@ -16,13 +16,12 @@ import Auth from '../utils/auth';
 
 const SavedPlants = () => {
   const { loading, data } = useQuery(QUERY_ME);
+  
   const [removePlant, { error }] = useMutation(REMOVE_PLANT);
 
   const userData = data?.me || {};
 
-  // create function that accepts the plants's mongo _id value as param and deletes the plant from the database
   const handleDeletePlant = async (plantId) => {
-    // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -49,7 +48,7 @@ const SavedPlants = () => {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1>Viewing {userData.username}'s plants!</h1>
+          <h1 style={{textAlign: "center"}}>Viewing {userData.user}'s plants!</h1>
         </Container>
       </Jumbotron>
       <Container>
@@ -74,7 +73,7 @@ const SavedPlants = () => {
                 <Card.Body>
                   <Card.Title>{plant.name}</Card.Title>
                   <p className="small">Water: {plant.water}</p>
-                  <Card.Text>{plant.sun} {plant.pet} </Card.Text>
+                  <Card.Text>{plant.light} {plant.pet} </Card.Text>
                   <Button
                     className="btn-block btn-danger"
                     onClick={() => handleDeletePlant(plant.plantId)}

@@ -1,19 +1,23 @@
 // imported from book-search-engine hw
 
-
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
+
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 
-import SearchBooks from './pages/SearchBooks';
-import SavedBooks from './pages/SavedBooks';
+import WelcomePage from './pages/WelcomePage'; 
+import SearchPlants from './pages/SearchPlants';
+import SavedPlants from './pages/SavedPlants';
+import Donate from './pages/Donate';
 import Navbar from './components/Navbar';
+import Jon from './pages/Jon'
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -40,14 +44,18 @@ const client = new ApolloClient({
 });
 
 function App() {
+
   return (
     <ApolloProvider client={client}>
       <Router>
         <>
           <Navbar />
           <Switch>
-            <Route exact path="/" component={SearchBooks} />
-            <Route exact path="/saved" component={SavedBooks} />
+            <Route exact path="/" component={WelcomePage} />
+            <Route exact path="/search" component={SearchPlants} />
+            <Route exact path="/saved" component={SavedPlants} />
+            <Route exact path="/donate" component={Donate} />
+            <Route exact path="/Jon" component={Jon} />
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
         </>
