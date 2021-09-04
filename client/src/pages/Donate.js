@@ -2,6 +2,7 @@ import React from 'react';
 // for toast notifications
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DateTime from '../components/Time';
 
 
 import Auth from '../utils/auth';
@@ -31,6 +32,9 @@ const Donate = () => {
                 <button onClick={newPlant}> Notify !</button>
 
                 <ToastContainer/>
+            </div>
+            <div>
+                <DateTime/>
             </div>
         </div>
     )
