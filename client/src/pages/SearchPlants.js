@@ -49,6 +49,13 @@ const SearchPlants = () => {
     return () => savePlantIds(savedPlantIds);
   });
 
+  const checkTrue = (thing) => {
+    if(thing) {
+      return `Yes`
+    } else
+    return `No`
+  }
+
   // create function to handle saving a plant to our user
   const handleSavePlant = async (plantId) => {
     // find the plant in `searchedPlants` state by the matching id
@@ -84,8 +91,8 @@ const SearchPlants = () => {
           <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', fontSize: "64px"}}>Our Beautiful Plant Page</h1>
         </Container>
       </Jumbotron>
-      {data.plants.map((plants, i) => (
         <Container >
+      {data.plants.map((plants, i) => (
         <CardColumns>
               <Card key={plants._id} border="dark">
                 {plants.plantImage ? (
@@ -99,7 +106,7 @@ const SearchPlants = () => {
                   <Card.Title>{plants.plantName}</Card.Title>
                   <p className="small">Sun: {plants.plantLight}</p>
                   <p className="small">Water: {plants.plantWater}</p>
-                  <p className="small">Pet-Friendly: {plants.petFriendly}</p>
+                  <p className="small">Pet-Friendly: {checkTrue(plants.petFriendly)}</p>
                   <Card.Text>{plants.plantLight}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
@@ -117,9 +124,8 @@ const SearchPlants = () => {
                 </Card.Body>
               </Card>
         </CardColumns>
+                        ))}
       </Container>
-                        ),
-                        console.log(data.plants, 'consolelog 122'))}
     </>
   );
 };
