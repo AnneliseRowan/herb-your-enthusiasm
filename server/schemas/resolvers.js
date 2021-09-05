@@ -54,7 +54,7 @@ const resolvers = {
         return { token, profile };
       },
 
-      addUserPlant: async (parent, { plantName, userID, plantNickName, plantLight, plantWater, petFriendly, plantImage, moreInfo }) => {
+      saveUserPlant: async (parent, { plantName, userID, plantNickName, plantLight, plantWater, petFriendly, plantImage, moreInfo }) => {
         const userPlant = await Profile.create({ plantName, userID, plantNickName, plantLight, plantWater, petFriendly, plantImage, moreInfo });
         const token = signToken(userPlant);
   
