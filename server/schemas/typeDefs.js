@@ -42,6 +42,7 @@ const typeDefs = gql`
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     removeProfile: Profile
+    saveUserPlant(plantName: String!, userID: String!, plantNickName: String, plantLight: String, plantWater: String, petFriendly: Boolean, plantImage: String, moreInfo: String)
   }
 `;
 

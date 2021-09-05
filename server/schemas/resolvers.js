@@ -53,6 +53,13 @@ const resolvers = {
         const token = signToken(profile);
         return { token, profile };
       },
+
+      addUserPlant: async (parent, { plantName, userID, plantNickName, plantLight, plantWater, petFriendly, plantImage, moreInfo }) => {
+        const userPlant = await Profile.create({ plantName, userID, plantNickName, plantLight, plantWater, petFriendly, plantImage, moreInfo });
+        const token = signToken(userPlant);
+  
+        return { token, userPlant };
+      },
   
       // Add a third argument to the resolver to access data in our `context`
       // addSkill: async (parent, { profileId, skill }, context) => {

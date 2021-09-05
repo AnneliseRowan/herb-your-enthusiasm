@@ -55,3 +55,19 @@ export const REMOVE_PLANT = gql`
     }
   }
 `;
+
+export const JON_PLANT = gql`
+  mutation savePlant($plantData: PlantInput!) {
+    savePlant(plantData: $plantData) {
+      _id
+      username
+      email
+      savedPlants {
+        name
+        water
+        sun
+        pets
+      }
+    }
+  }
+`;
