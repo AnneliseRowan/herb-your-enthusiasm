@@ -6,7 +6,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-  }
+  }  
   type Auth {
     token: ID!
     profile: Profile
@@ -16,7 +16,7 @@ const typeDefs = gql`
     profile(profileId: ID!): Profile    
     me: Profile
     plants: [Plant]!
-    userplants: [Userplant]!
+    userplants: [Userplant]! 
   }
   type Plant {
     _id: ID
@@ -39,9 +39,10 @@ const typeDefs = gql`
     moreInfo: String
   }
   type Mutation {
+    saveUserPlant(userID: String, plantNickName: String, plantName: String, plantLight: String,   plantWater: String, petFriendly: Boolean, plantImage: String, moreInfo: String): Userplant
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    removeProfile: Profile
+    removeProfile: Profile        
   }
 `;
 
