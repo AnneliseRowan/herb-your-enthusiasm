@@ -57,15 +57,16 @@ export const REMOVE_PLANT = gql`
 `;
 
 export const JON_PLANT = gql`
-  mutation saveUserPlant($plantData: PlantInput!) {
-    saveUserPlant(plantData: $plantData) {      
-      userID
-      plantNickName
-      plantLight
-      plantWater
-      petFriendly
-      plantImage
-      moreInfo
-    }
+  mutation saveUserPlant($userID: String, $plantNickName: String, $plantName: String, $plantLight: String, $plantWater: String, $petFriendly: Boolean, $plantImage: String, $moreInfo: String){
+  saveUserPlant(userID: $userID, plantNickName: $plantNickName, plantName: $plantName, plantLight:$plantLight, plantWater: $plantWater, petFriendly: $petFriendly, plantImage: $plantImage, moreInfo: $moreInfo) {
+   	userID
+    plantNickName
+    plantName
+    plantLight
+    plantWater
+    petFriendly
+    plantImage
+    moreInfo
   }
+}
 `;
