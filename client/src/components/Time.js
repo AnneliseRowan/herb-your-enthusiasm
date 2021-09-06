@@ -9,17 +9,26 @@ const DateTime = () => {
         toast("Hooray! Your plant is watered")
     };
     const plantWatered = () => {
-        const elem = document.getElementById('water-date');
-        elem.innerHTML = `Plant last watered on: ${date.toDateString()}`;
-        waterSuccess();
-    }
+        const today = new Date();
+        const futureDate = new Date();
 
-    return(
+        futureDate.setDate(today.getDate() + 7);
+        const elem1 = document.getElementById('water-date');
+        const elem2 = document.getElementById('future-date');
+        elem1.innerHTML = `Plant last watered on: ${today.toDateString()}`;
+        elem2.innerHTML = `Your plant needst to be watered next on: ${futureDate.toDateString()}`
+        waterSuccess();
+    };
+
+
+
+    return (
         <div>
             <button onClick={plantWatered}>Press this to water your plant </button>
             <p id='water-date'></p>
+            <p id='future-date'></p>
         </div>
     )
-}
+};
 
 export default DateTime;
