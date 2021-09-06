@@ -1,6 +1,6 @@
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
-const { Profile, Plant, Userplant } = require('../models')
+const { Profile, Plant, Userplant  } = require('../models')
 
 const { signToken } = require('../utils/auth') 
 
@@ -37,6 +37,7 @@ const resolvers = {
   
         return { token, profile };
       },
+      
       login: async (parent, { email, password }) => {
         const profile = await Profile.findOne({ email });
   
@@ -52,6 +53,13 @@ const resolvers = {
   
         const token = signToken(profile);
         return { token, profile };
+      },
+
+      saveUserPlant: async (parent, { plantName, userID, plantNickName, plantLight, plantWater, petFriendly, plantImage, moreInfo }) => {
+        const userPlant = await Userplant.create({ plantName, userID, plantNickName, plantLight, plantWater, petFriendly, plantImage, moreInfo });
+        const token = signToken(userPlant);
+  
+        return { token, userPlant };
       },
   
       // Add a third argument to the resolver to access data in our `context`
