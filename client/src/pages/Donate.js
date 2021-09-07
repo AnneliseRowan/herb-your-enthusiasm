@@ -12,10 +12,11 @@ import './Style.css';
 const Donate = () => {
     const [showItem, setShowItem] = useState(false)
     return (
-      <div className="Donate">
-        <h1>Donate a Plant</h1>
-        {showItem ? <StripeContainer/> : <> <h3>$10.00</h3> <img src="https://images.unsplash.com/photo-1459156212016-c812468e2115?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=349&q=80" alt="small plant" style={{justifyContent:"center"}} />
+      <div className="Donate" style={{marginBottom: "50px", marginTop: "30px"}}>
+        <h1>Donate and Plant a Seed</h1>
+        {showItem ? <StripeContainer/> : <> <h3>$5.00</h3> <img src="https://images.unsplash.com/photo-1459156212016-c812468e2115?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1898&q=80" alt="small plant" style={{display: "block", marginLeft: "auto", marginRight: "auto", width: "50%"}} />
         <button onClick={() => setShowItem(true)}>Donate</button></>}
+        <h2>Look at our Github Page</h2>
       </div>
     );
 }
