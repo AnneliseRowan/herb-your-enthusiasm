@@ -28,3 +28,13 @@ margin-right: 0;
 .social-icons .social-icon:hover {
 background-color: #bd5d38;
 }
+
+#cardSizing {
+  flex: 0 0 33.3333333%;
+  /* max-width: 33.3333333%; */
+  position: relative;
+  width: 100%;
+  /* padding-right: 15px; */
+  /* padding-left: 15px; */
+  display: flex;
+}
