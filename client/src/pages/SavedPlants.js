@@ -2,9 +2,11 @@ import React from 'react';
 import {
   Jumbotron,
   Container,
-  CardColumns,
+  CardGroup,
   Card,
   Button,
+  Row,
+  Col
 } from 'react-bootstrap';
 
 import { useQuery, useMutation } from '@apollo/client';
@@ -59,32 +61,34 @@ const SavedPlants = () => {
               }:`
             : 'You have no saved plants!'}
         </h2>
-        <CardColumns>
-          {userData.savedPlants?.map((plant) => {
-            return (
-              <Card key={plant.plantId} border="dark">
-                {plant.image ? (
-                  <Card.Img
-                    src={plant.image}
-                    alt={`The image for ${plant.name}`}
-                    variant="top"
-                  />
-                ) : null}
-                <Card.Body>
-                  <Card.Title>{plant.name}</Card.Title>
-                  <p className="small">Water: {plant.water}</p>
-                  <Card.Text>{plant.light} {plant.pet} </Card.Text>
-                  <Button
-                    className="btn-block btn-danger"
-                    onClick={() => handleDeletePlant(plant.plantId)}
-                  >
-                    Delete this Plant!
-                  </Button>
-                </Card.Body>
-              </Card>
-            );
-          })}
-        </CardColumns>
+        <Row xs={1} md={2} className="g-4">
+          <Col >
+            {userData.savedPlants?.map((plant) => {
+              return (
+                <Card key={plant.plantId} border="dark">
+                  {plant.image ? (
+                    <Card.Img
+                      src={plant.image}
+                      alt={`The image for ${plant.name}`}
+                      variant="top"
+                    />
+                  ) : null}
+                  <Card.Body>
+                    <Card.Title>{plant.name}</Card.Title>
+                    <p className="small">Water: {plant.water}</p>
+                    <Card.Text>{plant.light} {plant.pet} </Card.Text>
+                    <Button
+                      className="btn-block btn-danger"
+                      onClick={() => handleDeletePlant(plant.plantId)}
+                    >
+                      Delete this Plant!
+                    </Button>
+                  </Card.Body>
+                </Card>
+              );
+            })}
+          </Col>
+        </Row>
       </Container>
     </>
   );
