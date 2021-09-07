@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
-import '../pages/style.css'; 
+import '../pages/Style.css'; 
 
 import Auth from '../utils/auth';
 

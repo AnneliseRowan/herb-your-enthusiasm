@@ -18,28 +18,14 @@ import { savePlantIds, getSavedPlantIds } from '../utils/localStorage';
 
 import Auth from '../utils/auth';
 
-import './style.css'
+import './Style.css'
 import plant from './plantData'; 
 
 const SearchPlants = () => {
   const { loading, data } = useQuery(QUERY_PLANT); 
-
-  if (loading) {
-    // return <h2>LOADING...</h2>;
-  } else {
-    console.log('dataaaa', data)
-  }
   
-    const userData = data?.plants || []; 
-
-    // console.log('userDataaa', userData); 
-  
-
-
-  // console.log('plant', data.plant.map((pl) => (
-  //   <li key={pl.id}>{pl.plantName}</li>
-  // )))
-  
+  const userData = data?.plants || []; 
+    
   const [searchedPlants, setSearchedPlants] = useState([]);
 
   const [savedPlantIds, setSavedPlantIds] = useState(getSavedPlantIds());
