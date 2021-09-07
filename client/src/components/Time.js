@@ -5,13 +5,20 @@ import { ReactDOM } from 'react';
 
 export default function DateTime() {
     const today1 = new Date();
-    
+
     const [date, setDate] = useState(new Date());
     const waterSuccess = () => {
         toast("Hooray! Your plant is watered")
     };
     const plantWatered = () => {
-        
+        // useEffect(() => {
+        //     setDate(JSON.parse(window.localStorage.getItem('date')));
+        // }, []);
+    
+        // useEffect(() => {
+        //     window.localStorage.setItem('date', date);
+        // }, [date]);
+
         const today = new Date();
         const futureDate = new Date();
 
@@ -22,6 +29,26 @@ export default function DateTime() {
         elem2.innerHTML = `Your plant needs to be watered next on: ${futureDate.toDateString()}`
         waterSuccess();
     };
+
+    // spider plant: 7 days
+    // aloe : 14-21 days
+    // snake plant: 2-3 days
+    // pothos: 7 days - 14 days
+    // succulents: 21-30
+    // peace lilies: 7-14 days
+    // african violet: 30 days
+    // ponytail: 7-14 days
+    // monstera: 10-14
+    // english ivy: 5-7
+    // basil: 3 days
+    // chives: 3
+    // mint: 3 
+    // oregano: 3
+    // parsley: 3
+    // rosemary: 7-14
+    // thyme: 7-14 days
+    // chinese evergreen: 7 days
+
 
 
     return (
@@ -84,7 +111,7 @@ export default function DateTime() {
 //             )
 //     }
 
-    
+
 // };
 
 
