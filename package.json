@@ -18,6 +18,9 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.4.1",
+    "@stripe/stripe-js": "^1.17.1",
+    "axios": "^0.21.4",
     "dotenv": "^10.0.0",
     "graphql": "^15.5.1",
     "onesignal": "^0.1.2",

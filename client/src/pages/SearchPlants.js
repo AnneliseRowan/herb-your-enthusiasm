@@ -7,6 +7,7 @@ import {
   Button,
   Card,
   CardColumns,
+  Row,
 } from 'react-bootstrap';
 
 import { useQuery, useMutation } from '@apollo/client';
@@ -17,28 +18,14 @@ import { savePlantIds, getSavedPlantIds } from '../utils/localStorage';
 
 import Auth from '../utils/auth';
 
-import './style.css'
+import './Style.css'
 import plant from './plantData'; 
 
 const SearchPlants = () => {
   const { loading, data } = useQuery(QUERY_PLANT); 
-
-  if (loading) {
-    // return <h2>LOADING...</h2>;
-  } else {
-    console.log('dataaaa', data)
-  }
   
-    const userData = data?.plants || []; 
-
-    // console.log('userDataaa', userData); 
-  
-
-
-  // console.log('plant', data.plant.map((pl) => (
-  //   <li key={pl.id}>{pl.plantName}</li>
-  // )))
-  
+  const userData = data?.plants || []; 
+    
   const [searchedPlants, setSearchedPlants] = useState([]);
 
   const [savedPlantIds, setSavedPlantIds] = useState(getSavedPlantIds());
@@ -86,46 +73,46 @@ const SearchPlants = () => {
 
   return ( 
     <>
-      <Jumbotron fluid className="text-dark bg-light">
+      <Jumbotron fluid className="text-dark bg-light" style={{marginTop:"45px"}}>
         <Container>
-          <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', fontSize: "64px"}}>Our Beautiful Plant Page</h1>
+          <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', fontSize: "72px"}}>Our Beautiful Plant Page</h1>
         </Container>
       </Jumbotron>
-        <Container >
-      {data.plants.map((plants, i) => (
-        <CardColumns>
-              <Card key={plants._id} border="dark">
+        <Row xs={1} md={2} lg={4} style={{}}>
+          {data.plants.map((plants, i) => (
+            <Col>
+              <Card key={plants._id} border="light" style={{width: "24rem", margin:"10px"}} id="cardSizing">
                 {plants.plantImage ? (
-                  <Card.Img
+                  <Card.Img style={{height:"36rem"}}
                   src={plants.plantImage}
                   alt={`The cover for ${plants.plantName}`}
                   variant="top"
                   />
-                  ) : null}
+                ) : null}
                 <Card.Body>
-                  <Card.Title>{plants.plantName}</Card.Title>
-                  <p className="small">Sun: {plants.plantLight}</p>
-                  <p className="small">Water: {plants.plantWater}</p>
-                  <p className="small">Pet-Friendly: {checkTrue(plants.petFriendly)}</p>
-                  <Card.Text>{plants.plantLight}</Card.Text>
+                  <Card.Title style={{fontFamily: 'Oleo Script, cursive', fontSize:"32px", textAlign:"center"}}>{plants.plantName}</Card.Title>
+                  <p className="medium">Sun: {plants.plantLight}</p>
+                  <p className="medium">Water: {plants.plantWater}</p>
+                  <p className="medium">Pet-Friendly: {checkTrue(plants.petFriendly)}</p>
+                  {/* <Card.Text>{plants.plantLight}</Card.Text> */}
                   {Auth.loggedIn() && (
                     <Button
                     disabled={savedPlantIds?.some(
                       (savedId) => savedId === plant.plantId
                       )}
-                      className="btn-block btn-info"
+                      className="btn-block btn-light" 
                       onClick={() => handleSavePlant(plant.plantId)}
                       >
                       {savedPlantIds?.some((savedId) => savedId === plant.plantId)
-                        ? 'Plant Already Saved!'
-                        : 'Save This Plant!'}
+                        ? "It's ok he's already adopted"
+                        : 'Adopt this plant🌱'}
                     </Button>
                   )}
                 </Card.Body>
               </Card>
-        </CardColumns>
-                        ))}
-      </Container>
+            </Col>
+          ))}
+      </Row>
     </>
   );
 };
