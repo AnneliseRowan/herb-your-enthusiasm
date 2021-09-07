@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css'
+import './Style.css'
 import Auth from '../utils/auth';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 
