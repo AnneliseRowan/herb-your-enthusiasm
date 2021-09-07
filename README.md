@@ -1,75 +1,91 @@
-https://herb-your-enthusiasm.herokuapp.com/
+# Herb Your Enthusiasm
+
+Your wonderful plants kept you company during the lonely time of covid but as the world gets back to 'normal' they are being a tad forgotten.
+
+Herb Your Enthusiasm is an application that let's you choose from a plant selection to add to your personal garden family. It will send you reminders of when to water and give you a place to keep all of your plant information. Adopt your plant today!!
+
+## Live Link:
+
+* [Herb-Your-Enthusiasm](https://herb-your-enthusiasm.herokuapp.com/)
+
+* [Github Repository](https://github.com/AnneliseRowan/herb-your-enthusiasm)
+
+* [PowerPoint Presentation]()
+
+## User Stories
+
+* As a user, I want to view the plants within the garden database.
+
+* As a user, I want to adopt plants to my garden database.
+
+* As a user, I want to receive notifications based on individual plant's watering need.
+
+* As a user, I want to be met with a friendly UI.
 
 
+## DEMO
+
+### This is the welcome page of Herb-Your-Enthusiasm.
+
+![welcome-page]()
+
+### This is the login modal that will popup when you click login
+
+![login-modal]()
+
+### Once you login, your navigation bar gives you access to other parts of the site including the donations page and your plant library
+
+![nav-bar]()
+
+### You can browse our current plants to choose one or many to adopt
+
+![plant-database]()
+
+### The user profile page presents with a picture and welcome sign
+
+![profile-page]()
+
+### A list of cards is shown of the adopted plants
+
+![user-plants]()
+
+### Notifications are sent depending on what plants are added to the garden
+
+![notifications]()
 
 
-# Getting Started with Create React App
+## Technology Used
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+Sequelize
 
-## Available Scripts
+MongoDb
 
-In the project directory, you can run:
+Node.js
 
-### `npm start`
+Express.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+React.js
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Heroku
 
-### `npm test`
+Mongoose
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React Bootstrap
 
-### `npm run build`
+CSS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Toastify (NPM React Package)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Contributors:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* [James Antley](https://github.com/Jimmant91)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* [Alexis Ligon](https://github.com/alexisligon)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* [Jonathan Nance](https://github.com/speakeasyman)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* [Annélise Rowan](https://github.com/AnneliseRowan)

@@ -1,5 +1,3 @@
-// imported from book-search-engine hw
-
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
@@ -71,9 +69,9 @@ const SignupForm = () => {
           dismissible
           onClose={() => setShowAlert(false)}
           show={showAlert}
-          variant="danger"
+          variant="secondary"
         >
-          Something went wrong with your signup!
+          Ugh...Ran into a log in issue!
         </Alert>
 
         <Form.Group>
@@ -87,7 +85,7 @@ const SignupForm = () => {
             required
           />
           <Form.Control.Feedback type="invalid">
-            Username is required!
+            Username is needed!
           </Form.Control.Feedback>
         </Form.Group>
 
@@ -102,7 +100,7 @@ const SignupForm = () => {
             required
           />
           <Form.Control.Feedback type="invalid">
-            Email is required!
+            Email is needed!
           </Form.Control.Feedback>
         </Form.Group>
 
@@ -117,7 +115,7 @@ const SignupForm = () => {
             required
           />
           <Form.Control.Feedback type="invalid">
-            Password is required!
+            Password is needed!
           </Form.Control.Feedback>
         </Form.Group>
         <Button
@@ -129,9 +127,9 @@ const SignupForm = () => {
             )
           }
           type="submit"
-          variant="success"
+          variant="dark"
         >
-          Submit
+          Yay!
         </Button>
       </Form>
     </>
