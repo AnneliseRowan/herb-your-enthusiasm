@@ -23,7 +23,7 @@ const Donate = () => {
             <div>
                 <button onClick={waterNotify}> Need to water my plant !</button>
                 <button onClick={newPlant}> Add a new plant !</button>
-
+                <p id='testing'></p>
                 <ToastContainer/>
                 <DateTime/>
             </div>
