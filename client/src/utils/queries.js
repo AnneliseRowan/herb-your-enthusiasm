@@ -18,6 +18,7 @@ export const QUERY_ME = gql`
 
 export const QUERY_PLANT = gql`
     query plants {
+    
     plants {
       _id
       plantName
