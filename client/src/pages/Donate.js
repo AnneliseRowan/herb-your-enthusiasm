@@ -19,6 +19,7 @@ const Donate = () => {
         <h2>Look at our Github Page</h2>
       </div>
     );
+
 }
 
 export default Donate;
