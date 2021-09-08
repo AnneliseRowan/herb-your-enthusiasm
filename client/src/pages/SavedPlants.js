@@ -10,18 +10,22 @@ import {
 } from 'react-bootstrap';
 
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_ME } from '../utils/queries';
+import { QUERY_ME, QUERY_USER_PLANT } from '../utils/queries';
 import { REMOVE_PLANT } from '../utils/mutations';
 import { removePlantId } from '../utils/localStorage';
 
 import Auth from '../utils/auth';
 
 const SavedPlants = () => {
-  const { loading, data } = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(QUERY_USER_PLANT);
   
   const [removePlant, { error }] = useMutation(REMOVE_PLANT);
-
-  const userData = data?.me || {};
+  
+  const userData = data?.userplants || {};
+  
+  console.log(data, 'wheres the data')
+  const user = Auth.getProfile()
+  console.log(user, 'user!!')
 
   const handleDeletePlant = async (plantId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;

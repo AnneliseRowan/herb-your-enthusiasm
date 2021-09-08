@@ -10,9 +10,10 @@ import {
   Row,
 } from 'react-bootstrap';
 
-import { useQuery, useMutation } from '@apollo/client';
-// import { useMutation } from '@apollo/client';
-import { SAVE_PLANT } from '../utils/mutations';
+
+import { gql, useQuery, useMutation } from '@apollo/client';
+//import { useMutation } from '@apollo/client';
+import { SAVE_PLANT, JON_PLANT } from '../utils/mutations';
 import { QUERY_PLANT } from '../utils/queries';
 import { savePlantIds, getSavedPlantIds } from '../utils/localStorage';
 
@@ -22,6 +23,7 @@ import './Style.css'
 import plant from './plantData'; 
 
 const SearchPlants = () => {
+  console.log('render search plants')
   const { loading, data } = useQuery(QUERY_PLANT); 
   
   const userData = data?.plants || []; 
@@ -42,6 +44,12 @@ const SearchPlants = () => {
     } else
     return `No`
   }
+
+
+  const [jonSavePlant, { data: savePlantData }] = useMutation(JON_PLANT)
+  const user = Auth.getProfile()
+
+  console.log('userrrr? ', user)
 
   // create function to handle saving a plant to our user
   const handleSavePlant = async (plantId) => {
@@ -71,6 +79,7 @@ const SearchPlants = () => {
     return <h2>LOADING...</h2>;
   }
 
+
   return ( 
     <>
       <Jumbotron fluid className="text-dark bg-light" style={{marginTop:"45px"}}>
@@ -78,10 +87,10 @@ const SearchPlants = () => {
           <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', fontSize: "72px"}}>Our Beautiful Plant Page</h1>
         </Container>
       </Jumbotron>
-        <Row xs={1} md={2} lg={4} style={{}}>
+        <Row xs={1} md={2} lg={4}>
           {data.plants.map((plants, i) => (
-            <Col>
-              <Card key={plants._id} border="light" style={{width: "24rem", margin:"10px"}} id="cardSizing">
+            <Col key={plants._id}>
+              <Card  border="light" style={{width: "24rem", margin:"10px"}} id="cardSizing">
                 {plants.plantImage ? (
                   <Card.Img style={{height:"36rem"}}
                   src={plants.plantImage}
@@ -101,7 +110,13 @@ const SearchPlants = () => {
                       (savedId) => savedId === plant.plantId
                       )}
                       className="btn-block btn-light" 
-                      onClick={() => handleSavePlant(plant.plantId)}
+                      onClick={() => {
+
+                        console.log('hunting ', data)
+                        jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plantName,
+                        plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
+                      plantImage: plants.plantImage, moreInfo: plants.moreInfo} })
+                      }}
                       >
                       {savedPlantIds?.some((savedId) => savedId === plant.plantId)
                         ? "It's ok he's already adopted"
