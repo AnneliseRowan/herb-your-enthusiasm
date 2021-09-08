@@ -34,6 +34,18 @@ const userPlantSchema = new Schema({
 
     moreInfo: {
         type: String
+    },
+
+    waterFrequency: {
+        type: String
+    },
+
+    lastWater: {
+        type: String
+    },
+
+    nextWater: {
+        type: String
     }
 
 });

@@ -55,11 +55,30 @@ const resolvers = {
         return { token, profile };
       },
 
-      saveUserPlant: async (parent, { plantName, userID, plantNickName, plantLight, plantWater, petFriendly, plantImage, moreInfo }) => {
-        const userPlant = await Userplant.create({ plantName, userID, plantNickName, plantLight, plantWater, petFriendly, plantImage, moreInfo });
+      saveUserPlant: async (parent, { plantName, userID, plantNickName, plantLight,
+         plantWater, petFriendly, plantImage, moreInfo,
+        waterFrequency, lastWater, nextWater }) => {
+        const userPlant = await Userplant.create({ plantName, userID, plantNickName,
+        plantLight, plantWater, petFriendly, plantImage, moreInfo,
+      waterFrequency, lastWater, nextWater });
         const token = signToken(userPlant);
   
         return { token, userPlant };
+      },
+
+      watered: async (_, { _id, lastWater, nextWater, waterFrequency }) => {
+        const userPlant = await Userplant.findOneAndUpdate( { _id });
+
+        if (!userPlant) {
+          throw new Error(`This is not the plant you are searching for`)
+        }
+
+        userPlant.lastWater = lastWater;
+        userPlant.nextWater = nextWater
+        
+        
+        return userPlant;
+
       },
   
       // Add a third argument to the resolver to access data in our `context`

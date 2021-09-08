@@ -11,6 +11,7 @@ const typeDefs = gql`
     token: ID!
     profile: Profile
   }
+  
   type Query {
     profiles: [Profile]!
     profile(profileId: ID!): Profile    
@@ -26,6 +27,7 @@ const typeDefs = gql`
     petFriendly: Boolean
     plantImage: String
     moreInfo: String
+    waterFrequency: String
   }
   type Userplant {
     _id: ID
@@ -37,12 +39,19 @@ const typeDefs = gql`
     petFriendly: Boolean
     plantImage: String
     moreInfo: String
+    waterFrequency: String
+    lastWater: String
+    nextWater: String
+
   }
   type Mutation {
-    saveUserPlant(userID: String, plantNickName: String, plantName: String, plantLight: String,   plantWater: String, petFriendly: Boolean, plantImage: String, moreInfo: String): Userplant
+    saveUserPlant(userID: String, plantNickName: String, plantName: String,
+    plantLight: String, plantWater: String, petFriendly: Boolean, plantImage: String,
+     moreInfo: String, waterFrequency: String, lastWater: String, nextWater: String): Userplant
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    removeProfile: Profile        
+    removeProfile: Profile
+    watered(_id: String, lastWater: String, nextWater: String, waterFrequency: String): Userplant   
   }
 `;
 

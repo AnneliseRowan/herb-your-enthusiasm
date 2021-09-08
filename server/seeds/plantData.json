@@ -5,7 +5,8 @@
     "plantWater": "2-3 weeks",
     "petFriendly": false,
     "plantImage": "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=80",
-    "moreInfo": "https://www.almanac.com/plant/aloe-vera"
+    "moreInfo": "https://www.almanac.com/plant/aloe-vera",
+    "waterFrequency": "17"
   },
 
   {
@@ -14,7 +15,8 @@
     "plantWater": "2-3 weeks * allow top 2-3 inches of soil to dry out",
     "petFriendly": true,
     "plantImage": "https://gardenerspath.com/wp-content/uploads/2017/10/Ponytail-Palm-Growing-Guide.jpg",
-    "moreInfo": "https://www.almanac.com/plant/ponytail-palms"
+    "moreInfo": "https://www.almanac.com/plant/ponytail-palms",
+    "waterFrequency": "17"
   },
 
   {
@@ -23,7 +25,8 @@
     "plantWater": "1x a week * when soil is dry, distilled water",
     "petFriendly": true,
     "plantImage": "https://wheelbarrowexpert.com/wp-content/uploads/2020/05/Depositphotos_120713430_l-2015.jpg",
-    "moreInfo": "https://www.almanac.com/plant/spider-plants"
+    "moreInfo": "https://www.almanac.com/plant/spider-plants",
+    "waterFrequency": "7"
   },
 
   {
@@ -32,7 +35,8 @@
     "plantWater": "1-2 weeks * allow soil to dry out between waterings",
     "petFriendly": false,
     "plantImage": "https://www.plantsandfriendstogo.com/uploads/1/2/4/8/124891442/s977686857814641365_p542_i1_w2560.jpeg",
-    "moreInfo": "https://www.almanac.com/plant/pothos"
+    "moreInfo": "https://www.almanac.com/plant/pothos",
+    "waterFrequency": "7"
   },
 
   {
@@ -41,16 +45,19 @@
     "plantWater": "2-3 days * when soil is dry to touch",
     "petFriendly": false,
     "plantImage": "https://images.unsplash.com/photo-1599009944997-3544a939813c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
-    "moreInfo": "https://www.almanac.com/plant/snake-plants"
+    "moreInfo": "https://www.almanac.com/plant/snake-plants",
+    "waterFrequency": "2"
   },
 
+  
   {
     "plantName": "Monstera Deliciosa",
     "plantLight": "Bright, Indirect * tolerates low light",
     "plantWater": "every 10-14 days * when topsoil has dried 80%",
     "petFriendly": false,
     "plantImage": "https://images.unsplash.com/photo-1604866830513-d54766457f45?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80",
-    "moreInfo": "https://monsteraplantresource.com/howtowateramonstera/"
+    "moreInfo": "https://monsteraplantresource.com/howtowateramonstera/",
+    "waterFrequency": "12"
   },
 
   {
@@ -59,7 +66,8 @@
     "plantWater": "1-2 weeks * look for drooping leaves",
     "petFriendly": false,
     "plantImage": "https://images.unsplash.com/photo-1616690248297-1ec539dd910f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=925&q=80",
-    "moreInfo": "https://www.almanac.com/plant/peace-lilies"
+    "moreInfo": "https://www.almanac.com/plant/peace-lilies",
+    "waterFrequency": "10"
   },
 
   {
@@ -68,7 +76,8 @@
     "plantWater": "3-4 weeks * allow soil to dry out",
     "petFriendly": true,
     "plantImage": "https://images.unsplash.com/photo-1494516192674-b82b5f1e61dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=933&q=80",
-    "moreInfo": "https://www.gardeningknowhow.com/ornamental/cacti-succulents/echeveria/caring-for-echeveria-plants.htm"
+    "moreInfo": "https://www.gardeningknowhow.com/ornamental/cacti-succulents/echeveria/caring-for-echeveria-plants.htm",
+    "waterFrequency": "24"
   },
 
   {
@@ -77,7 +86,8 @@
     "plantWater": "1x a month",
     "petFriendly": true,
     "plantImage": "https://images.unsplash.com/photo-1595609169861-8eedf5d26662?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2002&q=80",
-    "moreInfo": "https://www.almanac.com/plant/african-violets"
+    "moreInfo": "https://www.almanac.com/plant/african-violets",
+    "waterFrequency": "30"
   },
 
   {
@@ -86,7 +96,8 @@
     "plantWater": "5-7 days * keep soil evenly moist ",
     "petFriendly": false,
     "plantImage": "https://images.unsplash.com/photo-1540222755124-2be436052780?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80",
-    "moreInfo": "https://www.almanac.com/plant/english-ivy"
+    "moreInfo": "https://www.almanac.com/plant/english-ivy",
+    "waterFrequency": "6"
   },
 
   {
@@ -95,7 +106,8 @@
     "plantWater": "2x a week",
     "petFriendly": true,
     "plantImage": "https://images.unsplash.com/photo-1515471033351-f7a31fc10abe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJhc2lsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    "moreInfo": "https://www.almanac.com/plant/basil"
+    "moreInfo": "https://www.almanac.com/plant/basil",
+    "waterFrequency": "3"
   },
   {
     "plantName": "Chives",
@@ -103,7 +115,8 @@
     "plantWater": "2x a week",
     "petFriendly": false,
     "plantImage": "https://images.unsplash.com/photo-1593149198123-46380dbd87fd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2hpdmVzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    "moreInfo": "https://www.almanac.com/plant/chives"
+    "moreInfo": "https://www.almanac.com/plant/chives",
+    "waterFrequency": "3"
   },
 
   {
@@ -112,7 +125,8 @@
     "plantWater": "2x a week",
     "petFriendly": true,
     "plantImage": "https://images.unsplash.com/photo-1618130070080-91f4d55a2383?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80",
-    "moreInfo": "https://www.almanac.com/plant/mint"
+    "moreInfo": "https://www.almanac.com/plant/mint",
+    "waterFrequency": "3"
   },
 
   {
@@ -121,7 +135,8 @@
     "plantWater": "2x a week",
     "petFriendly": false,
     "plantImage": "http://www.pxleyes.com/images/contests/herbs/fullsize/Oregano-4dd427a8f12b2_hires.jpg",
-    "moreInfo": "https://www.almanac.com/plant/oregano"
+    "moreInfo": "https://www.almanac.com/plant/oregano",
+    "waterFrequency": "3"
   },
 
   {
@@ -130,7 +145,8 @@
     "plantWater": "2x a week",
     "petFriendly": false,
     "plantImage": "https://images.unsplash.com/photo-1601493700603-43461216807a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGFyc2VseXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    "moreInfo": "https://www.almanac.com/plant/parsley"
+    "moreInfo": "https://www.almanac.com/plant/parsley",
+    "waterFrequency": "3"
   },
 
   {
@@ -139,7 +155,8 @@
     "plantWater": "1-2 weeks * allow soil to dry out between waterings",
     "petFriendly": true,
     "plantImage": "https://images.unsplash.com/photo-1612354332972-9a89af7fd1a7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    "moreInfo": "https://images.unsplash.com/photo-1603129624917-3c579e864025?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cm9zZW1hcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    "moreInfo": "https://images.unsplash.com/photo-1603129624917-3c579e864025?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cm9zZW1hcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "waterFrequency": "10"
   },
 
   {
@@ -148,7 +165,8 @@
     "plantWater": "1-2 weeks * allow soil to dry out between waterings",
     "petFriendly": true,
     "plantImage": "https://images.unsplash.com/photo-1594027308808-24b68af6829b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80",
-    "moreInfo": "https://www.almanac.com/plant/thyme"
+    "moreInfo": "https://www.almanac.com/plant/thyme",
+    "waterFrequency": "10"
   },
 
   {
@@ -157,6 +175,7 @@
     "plantWater": "1x a week",
     "petFriendly": false,
     "plantImage": "https://images.unsplash.com/photo-1568151492546-1db658d0fc42?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    "moreInfo": "https://www.costafarms.com/plants/chinese-evergreen"
+    "moreInfo": "https://www.costafarms.com/plants/chinese-evergreen",
+    "waterFrequency": "7"
   }
 ]
