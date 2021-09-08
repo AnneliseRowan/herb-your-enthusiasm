@@ -31,3 +31,20 @@ export const QUERY_PLANT = gql`
      }
   
 `;
+
+export const QUERY_USER_PLANT = gql`
+query userplants {
+  
+  userplants{
+    _id
+    userID
+    plantNickName
+    plantName
+    plantLight
+    plantWater
+    petFriendly
+    plantImage
+    moreInfo
+  } 
+   }
+   `;
