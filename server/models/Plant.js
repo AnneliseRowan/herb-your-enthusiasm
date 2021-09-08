@@ -27,6 +27,10 @@ const plantSchema = new Schema({
 
     moreInfo: {
         type: String
+    },
+
+    waterFrequency: {
+        type: String
     }
 
 });

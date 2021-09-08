@@ -27,6 +27,7 @@ export const QUERY_PLANT = gql`
       petFriendly
       plantImage
       moreInfo
+      waterFrequency
     } 
      }
   
@@ -45,6 +46,9 @@ query userplants {
     petFriendly
     plantImage
     moreInfo
+    waterFrequency
+    lastWater
+    nextWater
   } 
    }
    `;

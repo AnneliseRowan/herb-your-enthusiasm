@@ -115,7 +115,8 @@ const SearchPlants = () => {
                         console.log('hunting ', data)
                         jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plantName,
                         plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
-                      plantImage: plants.plantImage, moreInfo: plants.moreInfo} })
+                      plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: new Date(), nextWater: "",
+                    waterFrequency: plants.waterFrequency} })
                       }}
                       >
                       {savedPlantIds?.some((savedId) => savedId === plant.plantId)
