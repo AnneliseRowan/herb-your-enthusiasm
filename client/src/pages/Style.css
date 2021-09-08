@@ -72,3 +72,27 @@ h1,
 h3 {
 	text-align: center;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+	background-color: grey;
+}
+
+.btn-secondary.disabled, .btn-secondary:disabled {
+	color: black; 
+}
+
+a {
+	color: black; 
+}
+
+.btn {
+	border: none; 
+}
+
+.modal-header .close {
+    margin: 0rem 1rem -1rem -21rem
+}
+
+.nav-pills .nav-link {
+    border-radius: 2.25rem;
+}
