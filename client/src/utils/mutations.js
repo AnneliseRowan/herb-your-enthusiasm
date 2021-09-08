@@ -73,5 +73,12 @@ mutation saveUserPlant($userID: String, $plantNickName: String, $plantName: Stri
 `;
 
 export const UPDATE_PLANT = gql`
-
+mutation watered($_id: String, $lastWater: String, $nextWater: String, $waterFrequency: String ) {
+  watered(_id: $_id, lastWater: $lastWater, nextWater: $nextWater, waterFrequency: $waterFrequency) {
+    _id
+    plantName
+    lastWater
+    nextWater
+  }
+}
 `;
