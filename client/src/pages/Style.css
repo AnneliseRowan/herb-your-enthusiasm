@@ -80,7 +80,7 @@ h3 {
 }
 
 
-p {
+/* p {
 	font-size: small;
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
@@ -89,7 +89,7 @@ p {
 
 .btn-secondary.disabled, .btn-secondary:disabled {
 	color: black; 
-}
+} */
 
 a {
 	color: black; 
