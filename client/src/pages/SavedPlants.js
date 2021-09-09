@@ -28,6 +28,10 @@ const SavedPlants = () => {
 
   const user = Auth.getProfile()
 
+  const waterPlant = () => {
+    console.log('button worked')
+  }
+
 
   const handleDeletePlant = async (plantId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -96,6 +100,10 @@ const SavedPlants = () => {
                   <p className="medium">Sun: {plant.plantLight}</p>
                   <p className="medium">Water: {plant.plantWater}</p>
                   {/* <p className="medium">Pet-Friendly: {checkTrue(plant.petFriendly)}</p> */}
+                  <Button
+                  onClick={() => waterPlant()}>
+                    Water Me!
+                  </Button>
                   <Button
                     className="btn-block"
                     style={{backgroundColor: "#88BDBC"}}
