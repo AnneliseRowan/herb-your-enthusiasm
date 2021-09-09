@@ -96,3 +96,7 @@ a {
 .nav-pills .nav-link {
     border-radius: 2.25rem;
 }
+
+.ElementsApp, .ElementsApp .InputElement {
+	color: black; 
+}

@@ -25,8 +25,6 @@ import plant from './plantData';
 const SearchPlants = () => {
   console.log('render search plants')
   const { loading, data } = useQuery(QUERY_PLANT); 
-  
-  const userData = data?.plants || []; 
     
   const [searchedPlants, setSearchedPlants] = useState([]);
 
@@ -56,7 +54,6 @@ const SearchPlants = () => {
     // find the plant in `searchedPlants` state by the matching id
     const plantToSave = searchedPlants.find((plant) => plant.plantId === plantId);
 
-
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -67,9 +64,7 @@ const SearchPlants = () => {
       const { data } = await savePlant({
         variables: { plantData: { ...plantToSave } },
       });
-      console.log('savedPlantIds', savedPlantIds);
       setSavedPlantIds([...savedPlantIds, plantToSave.plantId]);
-      console.log(data, 'data line 70')
     } catch (err) {
       console.error(err);
     }
@@ -82,7 +77,7 @@ const SearchPlants = () => {
 
   return ( 
     <>
-      <Jumbotron fluid className="text-dark bg-light" style={{marginTop:"45px"}}>
+      <Jumbotron fluid className="text-dark" style={{marginTop:"45px", backgroundColor: "#C2CAD0"}}>
         <Container>
           <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', fontSize: "72px"}}>Our Beautiful Plant Page</h1>
         </Container>
@@ -90,7 +85,7 @@ const SearchPlants = () => {
         <Row xs={1} md={2} lg={4}>
           {data.plants.map((plants, i) => (
             <Col key={plants._id}>
-              <Card  border="light" style={{width: "24rem", margin:"10px"}} id="cardSizing">
+              <Card  border="light" style={{width: "24rem", margin:"10px", padding: "0px 10px 0px 10px"}} id="cardSizing">
                 {plants.plantImage ? (
                   <Card.Img style={{height:"36rem"}}
                   src={plants.plantImage}
@@ -103,16 +98,15 @@ const SearchPlants = () => {
                   <p className="medium">Sun: {plants.plantLight}</p>
                   <p className="medium">Water: {plants.plantWater}</p>
                   <p className="medium">Pet-Friendly: {checkTrue(plants.petFriendly)}</p>
-                  {/* <Card.Text>{plants.plantLight}</Card.Text> */}
+                  {/* <p className="medium">More Info: {plants.plantInfo}</p> */}
                   {Auth.loggedIn() && (
                     <Button
                     disabled={savedPlantIds?.some(
                       (savedId) => savedId === plant.plantId
                       )}
-                      className="btn-block btn-light" 
+                      className="btn-block"
+                      style={{backgroundColor: "#E7717D"}} 
                       onClick={() => {
-
-                        console.log('hunting ', data)
                         jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plantName,
                         plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
                       plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: new Date(), nextWater: "",
