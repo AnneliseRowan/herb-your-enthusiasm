@@ -38,7 +38,10 @@ const SavedPlants = () => {
 
     try {
       const { data } = await removePlant({
-        variables: { _id: plantId }, 
+        variables: { _id: plantId },
+        refetchQueries: [
+          { query: QUERY_USER_PLANT}
+        ] 
       });
 
       // upon success, remove plants's id from localStorage
