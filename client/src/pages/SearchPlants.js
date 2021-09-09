@@ -141,7 +141,7 @@ const SearchPlants = () => {
                           className="btn-block btn-light" 
                           onClick={() => jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plantName,
                         plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
-                      plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: new Date(), nextWater: "",
+                      plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: "", nextWater: "",
                     waterFrequency: plants.waterFrequency} })
                       }
                           >
