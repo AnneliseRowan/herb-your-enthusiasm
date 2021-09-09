@@ -13,6 +13,8 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME, QUERY_USER_PLANT } from '../utils/queries';
 import { REMOVE_PLANT, UPDATE_PLANT } from '../utils/mutations';
 import { removePlantId } from '../utils/localStorage';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './Style.css'
 
@@ -20,6 +22,8 @@ import Auth from '../utils/auth';
 
 const SavedPlants = () => {
   const { loading, data } = useQuery(QUERY_USER_PLANT);
+
+  console.log(data, 'raawwwrs')
 
   const [removePlant, { error }] = useMutation(REMOVE_PLANT);
 
@@ -29,25 +33,31 @@ const SavedPlants = () => {
 
 
   const checkTrue = (thing) => {
-    if(thing) {
+    if (thing) {
       return `Yes`
     } else
-    return `No`
+      return `No`
   }
   const user = Auth.getProfile()
 
-  const handleWaterPlant = async (plantId2) => {
+  const handleWaterPlant = async (plantId2, waterFrequency) => {
+    const waterSuccess = () => {
+      toast("Hooray! Your plant is watered")
+    };
+    waterSuccess();
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
       return false;
     }
-    const water1 = new Date().toDateString();
-    const water2 = "futuredate"
+    const water1 = new Date();
+    const water2 = new Date();
+
+    water2.setDate(water1.getDate()+ waterFrequency)
 
     try {
       const { data2 } = await waterPlant({
-        variables: { _id: plantId2, lastWater: water1, nextWater: water2 },
+        variables: { _id: plantId2, lastWater: water1.toDateString(), nextWater: water2.toDateString() },
         refetchQueries: [
           { query: QUERY_USER_PLANT }
         ]
@@ -89,6 +99,7 @@ const SavedPlants = () => {
   return (
     <>
       <div>
+        <ToastContainer/>
         <div style={{
           backgroundColor: "#C2CAD0",
           display: "flex",
@@ -131,7 +142,7 @@ const SavedPlants = () => {
 
                 <p className="medium">Pet-Friendly: {checkTrue(plant.petFriendly)}</p>
                 <Button
-                  onClick={() => handleWaterPlant(plant._id)}>
+                  onClick={() => handleWaterPlant(plant._id, parseInt(plant.waterFrequency))}>
                   Water Me!
                 </Button>
                 <Button
