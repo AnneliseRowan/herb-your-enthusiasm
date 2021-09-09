@@ -73,7 +73,10 @@ const resolvers = {
         }, 
         {new: true}
         );
+      },
 
+      deletePlant: async (parent, { _id }) => {
+        const userPlant = await Userplant.findOneAndDelete( { _id: _id} );
       },
   
       // Add a third argument to the resolver to access data in our `context`
