@@ -7,6 +7,12 @@ body {
   color: black; 
 }
 
+.box{
+	height:200px;
+	width:200px;
+	background:linear-gradient(rgba(250,0,0,0.5),transparent);
+	background-color:orange /*this your primary color*/
+}
 
 .social-icons .social-icon {
     display: inline-flex;
@@ -16,7 +22,7 @@ body {
     width: 2.5rem;
     background-color: white;
     color: #fff;
-    border-radius: 100%;
+    border-radius: 50%;
     font-size: 1.5rem;
     margin-right: 1.5rem;
 }
@@ -73,6 +79,10 @@ h3 {
 	text-align: center;
 }
 
+
+p {
+	font-size: small;
+
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
 	background-color: grey;
 }
@@ -99,4 +109,5 @@ a {
 
 .ElementsApp, .ElementsApp .InputElement {
 	color: black; 
+
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from "react-dom";
 import {
   Jumbotron,
   Container,
@@ -8,7 +9,9 @@ import {
   Card,
   CardColumns,
   Row,
+  Collapse
 } from 'react-bootstrap';
+import {Helmet} from 'react-helmet';
 
 
 import { gql, useQuery, useMutation } from '@apollo/client';
@@ -32,6 +35,10 @@ const SearchPlants = () => {
 
   const [savePlant, { error }] = useMutation(SAVE_PLANT);
 
+  // const [open, setOpen] = React.useState(false, -1);
+
+  const [expandedId, setExpandedId] = React.useState(false, -1);
+
   useEffect(() => {
     return () => savePlantIds(savedPlantIds);
   });
@@ -44,10 +51,16 @@ const SearchPlants = () => {
   }
 
 
+  const handleExpandClick = (i) => {
+    setExpandedId(expandedId === i ? -1 : i);
+  };
+
+
   const [jonSavePlant, { data: savePlantData }] = useMutation(JON_PLANT)
   const user = Auth.getProfile()
 
   console.log('userrrr? ', user)
+
 
   // create function to handle saving a plant to our user
   const handleSavePlant = async (plantId) => {
@@ -77,46 +90,68 @@ const SearchPlants = () => {
 
   return ( 
     <>
-      <Jumbotron fluid className="text-dark" style={{marginTop:"45px", backgroundColor: "#C2CAD0"}}>
+
+      <Helmet>
+        <style>{'body { background:linear-gradient(rgba(250,0,0,0.5),transparent); background-color: green; }'}</style>
+      </Helmet>
+      <Jumbotron fluid className="text-dark bg-light" style={{marginTop:"45px", border:'solid'}}>
+
         <Container>
-          <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', fontSize: "72px"}}>Our Beautiful Plant Page</h1>
+          <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', color: 'green', fontSize: "72px"}}>Our Beautiful Plant Page</h1>
         </Container>
       </Jumbotron>
         <Row xs={1} md={2} lg={4}>
           {data.plants.map((plants, i) => (
-            <Col key={plants._id}>
-              <Card  border="light" style={{width: "24rem", margin:"10px", padding: "0px 10px 0px 10px"}} id="cardSizing">
+
+            <Col>
+              <Card key={plants._id} className="bg-warning" border="solid purple" style={{width: "16rem", margin:"10px"}} id="cardSizing">
+
                 {plants.plantImage ? (
-                  <Card.Img style={{height:"36rem"}}
+                  <Card.Img style={{height:"14rem"}} className="border-bottom border-dark"
                   src={plants.plantImage}
                   alt={`The cover for ${plants.plantName}`}
                   variant="top"
                   />
                 ) : null}
                 <Card.Body>
-                  <Card.Title style={{fontFamily: 'Oleo Script, cursive', fontSize:"32px", textAlign:"center"}}>{plants.plantName}</Card.Title>
-                  <p className="medium">Sun: {plants.plantLight}</p>
-                  <p className="medium">Water: {plants.plantWater}</p>
-                  <p className="medium">Pet-Friendly: {checkTrue(plants.petFriendly)}</p>
-                  {/* <p className="medium">More Info: {plants.plantInfo}</p> */}
+
+                  <Card.Title style={{fontFamily: 'Oleo Script, cursive', fontSize:"22px", textAlign:"center"}}>{plants.plantName}</Card.Title>
+                  <Button size="sm"
+                    onClick={() => handleExpandClick(i)}
+                    aria-controls="plantInfo"
+                    aria-expanded={expandedId === i}
+                  >
+                      Info
+                  </Button>
+                  <Collapse in={expandedId === i}>
+                    <div id="plantInfo">
+                      <p className="medium"><b>Sun</b>: {plants.plantLight}</p>
+                      <p className="medium"><b>Water</b>: {plants.plantWater}</p>
+                      <p className="medium"><b>Pet-Friendly</b>: {checkTrue(plants.petFriendly)}</p>
+                    </div>
+                  </Collapse>
+                  {/* <Card.Text>{plants.plantLight}</Card.Text> */}
                   {Auth.loggedIn() && (
-                    <Button
-                    disabled={savedPlantIds?.some(
-                      (savedId) => savedId === plant.plantId
-                      )}
-                      className="btn-block"
-                      style={{backgroundColor: "#E7717D"}} 
-                      onClick={() => {
-                        jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plantName,
+                    <Row>
+                      <div class='text-center'>
+                        <Button size="sm"
+                        disabled={savedPlantIds?.some(
+                          (savedId) => savedId === plant.plantId
+                          )}
+                          className="btn-block btn-light" 
+                          onClick={() => jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plantName,
                         plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
                       plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: new Date(), nextWater: "",
                     waterFrequency: plants.waterFrequency} })
                       }}
-                      >
-                      {savedPlantIds?.some((savedId) => savedId === plant.plantId)
-                        ? "It's ok he's already adopted"
-                        : 'Adopt this plant🌱'}
-                    </Button>
+                          >
+                          {savedPlantIds?.some((savedId) => savedId === plant.plantId)
+                            ? "It's ok he's already adopted"
+                            : 'Adopt this plant🌱'}
+                        </Button>
+                      </div>
+                    </Row>
+
                   )}
                 </Card.Body>
               </Card>
