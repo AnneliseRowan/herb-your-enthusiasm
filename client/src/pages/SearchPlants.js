@@ -17,7 +17,7 @@ import {Helmet} from 'react-helmet';
 import { gql, useQuery, useMutation } from '@apollo/client';
 //import { useMutation } from '@apollo/client';
 import { SAVE_PLANT, JON_PLANT } from '../utils/mutations';
-import { QUERY_PLANT } from '../utils/queries';
+import { QUERY_PLANT, QUERY_USER_PLANT } from '../utils/queries';
 import { savePlantIds, getSavedPlantIds } from '../utils/localStorage';
 
 import Auth from '../utils/auth';
@@ -142,7 +142,10 @@ const SearchPlants = () => {
                           onClick={() => jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plantName,
                         plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
                       plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: new Date(), nextWater: "",
-                    waterFrequency: plants.waterFrequency} })
+                    waterFrequency: plants.waterFrequency},
+                    refetchQueries: [
+                      { query: QUERY_USER_PLANT}
+                    ]  })
                       }
                           >
                           {savedPlantIds?.some((savedId) => savedId === plant.plantId)
