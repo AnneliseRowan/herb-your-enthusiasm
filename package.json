@@ -25,6 +25,8 @@
     "graphql": "^15.5.1",
     "onesignal": "^0.1.2",
     "onesignal-node": "^3.3.0",
-    "react-toastify": "^8.0.2"
+    "react-helmet": "^6.1.0",
+    "react-toastify": "^8.0.2",
+    "stripe": "^8.174.0"
   }
 }
