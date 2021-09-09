@@ -40,20 +40,11 @@ export const SAVE_PLANT = gql`
   }
 `;
 
-export const REMOVE_PLANT = gql`
-  mutation removePlant($plantId: ID!) {
-    removePlant(plantId: $plantId) {
-      _id
-      username
-      email
-      savedPlants {
-        name
-        water
-        sun
-        pets
-      }
-    }
+export const REMOVE_PLANT = gql`mutation deletePlant($_id: String) {
+  deletePlant(_id: $_id){
+    _id
   }
+}
 `;
 
 export const JON_PLANT = gql`

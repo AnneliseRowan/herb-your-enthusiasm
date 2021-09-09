@@ -23,9 +23,8 @@ const SavedPlants = () => {
   
   const userData = data?.userplants || {};
   
-  console.log(data, 'wheres the data')
   const user = Auth.getProfile()
-  console.log(user, 'user!!')
+
 
   const handleDeletePlant = async (plantId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -36,7 +35,7 @@ const SavedPlants = () => {
 
     try {
       const { data } = await removePlant({
-        variables: { plantId },
+        variables: { _id: plantId }, 
       });
 
       // upon success, remove plants's id from localStorage
@@ -98,7 +97,7 @@ const SavedPlants = () => {
                     <Card.Text>{plant.plantLight} {plant.plantPet} </Card.Text>
                     <Button
                       className="btn-block btn-danger"
-                      onClick={() => handleDeletePlant(plant._id)}
+                      onClick={() => removePlant( { variables: {_id: plant._id}}).then(window.location.reload())}
                     >
                       Delete this Plant!
                     </Button>
