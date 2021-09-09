@@ -1,6 +1,3 @@
-// imported from book-search-engine hw
-// see SignupForm.js for comments
-
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
@@ -63,9 +60,9 @@ const LoginForm = () => {
           dismissible
           onClose={() => setShowAlert(false)}
           show={showAlert}
-          variant="danger"
+          variant="secondary"
         >
-          Something went wrong with your login credentials!
+          Hmmm...Running into a small issue let's try again!
         </Alert>
         <Form.Group>
           <Form.Label htmlFor="email">Email</Form.Label>
@@ -78,7 +75,7 @@ const LoginForm = () => {
             required
           />
           <Form.Control.Feedback type="invalid">
-            Email is required!
+            Email is needed!
           </Form.Control.Feedback>
         </Form.Group>
 
@@ -93,15 +90,15 @@ const LoginForm = () => {
             required
           />
           <Form.Control.Feedback type="invalid">
-            Password is required!
+            Password is needed!
           </Form.Control.Feedback>
         </Form.Group>
         <Button
           disabled={!(userFormData.email && userFormData.password)}
           type="submit"
-          variant="success"
+          variant="dark"
         >
-          Submit
+          Let's Go!
         </Button>
       </Form>
     </>

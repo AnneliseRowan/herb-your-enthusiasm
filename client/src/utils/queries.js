@@ -12,12 +12,12 @@ export const QUERY_ME = gql`
         sun
         pets
       }
-    }}
-  
+    }
+  }
 `;
 
 export const QUERY_PLANT = gql`
-    query plants {
+  query plants {
     plants {
       _id
       plantName
@@ -26,7 +26,27 @@ export const QUERY_PLANT = gql`
       petFriendly
       plantImage
       moreInfo
+      waterFrequency
     } 
-     }
-  
+  }
+`;
+
+export const QUERY_USER_PLANT = gql`
+  query userplants {
+    
+    userplants{
+      _id
+      userID
+      plantNickName
+      plantName
+      plantLight
+      plantWater
+      petFriendly
+      plantImage
+      moreInfo
+      waterFrequency
+      lastWater
+      nextWater
+    } 
+  }
 `;

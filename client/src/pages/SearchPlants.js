@@ -13,9 +13,10 @@ import {
 } from 'react-bootstrap';
 import {Helmet} from 'react-helmet';
 
-import { useQuery, useMutation } from '@apollo/client';
-// import { useMutation } from '@apollo/client';
-import { SAVE_PLANT } from '../utils/mutations';
+
+import { gql, useQuery, useMutation } from '@apollo/client';
+//import { useMutation } from '@apollo/client';
+import { SAVE_PLANT, JON_PLANT } from '../utils/mutations';
 import { QUERY_PLANT } from '../utils/queries';
 import { savePlantIds, getSavedPlantIds } from '../utils/localStorage';
 
@@ -25,9 +26,8 @@ import './Style.css'
 import plant from './plantData'; 
 
 const SearchPlants = () => {
+  console.log('render search plants')
   const { loading, data } = useQuery(QUERY_PLANT); 
-  
-  const userData = data?.plants || []; 
     
   const [searchedPlants, setSearchedPlants] = useState([]);
 
@@ -50,15 +50,22 @@ const SearchPlants = () => {
     return `No`
   }
 
+
   const handleExpandClick = (i) => {
     setExpandedId(expandedId === i ? -1 : i);
   };
+
+
+  const [jonSavePlant, { data: savePlantData }] = useMutation(JON_PLANT)
+  const user = Auth.getProfile()
+
+  console.log('userrrr? ', user)
+
 
   // create function to handle saving a plant to our user
   const handleSavePlant = async (plantId) => {
     // find the plant in `searchedPlants` state by the matching id
     const plantToSave = searchedPlants.find((plant) => plant.plantId === plantId);
-
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -70,9 +77,7 @@ const SearchPlants = () => {
       const { data } = await savePlant({
         variables: { plantData: { ...plantToSave } },
       });
-      console.log('savedPlantIds', savedPlantIds);
       setSavedPlantIds([...savedPlantIds, plantToSave.plantId]);
-      console.log(data, 'data line 70')
     } catch (err) {
       console.error(err);
     }
@@ -82,20 +87,25 @@ const SearchPlants = () => {
     return <h2>LOADING...</h2>;
   }
 
+
   return ( 
     <>
+
       <Helmet>
         <style>{'body { background:linear-gradient(rgba(250,0,0,0.5),transparent); background-color: green; }'}</style>
       </Helmet>
       <Jumbotron fluid className="text-dark bg-light" style={{marginTop:"45px", border:'solid'}}>
+
         <Container>
           <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', color: 'green', fontSize: "72px"}}>Our Beautiful Plant Page</h1>
         </Container>
       </Jumbotron>
-        <Row xs={1} md={2} lg={4} style={{}}>
+        <Row xs={1} md={2} lg={4}>
           {data.plants.map((plants, i) => (
+
             <Col>
               <Card key={plants._id} className="bg-warning" border="solid purple" style={{width: "16rem", margin:"10px"}} id="cardSizing">
+
                 {plants.plantImage ? (
                   <Card.Img style={{height:"14rem"}} className="border-bottom border-dark"
                   src={plants.plantImage}
@@ -104,6 +114,7 @@ const SearchPlants = () => {
                   />
                 ) : null}
                 <Card.Body>
+
                   <Card.Title style={{fontFamily: 'Oleo Script, cursive', fontSize:"22px", textAlign:"center"}}>{plants.plantName}</Card.Title>
                   <Button size="sm"
                     onClick={() => handleExpandClick(i)}
@@ -128,7 +139,11 @@ const SearchPlants = () => {
                           (savedId) => savedId === plant.plantId
                           )}
                           className="btn-block btn-light" 
-                          onClick={() => handleSavePlant(plant.plantId)}
+                          onClick={() => jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plantName,
+                        plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
+                      plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: new Date(), nextWater: "",
+                    waterFrequency: plants.waterFrequency} })
+                      }}
                           >
                           {savedPlantIds?.some((savedId) => savedId === plant.plantId)
                             ? "It's ok he's already adopted"
@@ -136,6 +151,7 @@ const SearchPlants = () => {
                         </Button>
                       </div>
                     </Row>
+
                   )}
                 </Card.Body>
               </Card>

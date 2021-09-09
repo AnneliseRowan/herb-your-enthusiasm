@@ -40,33 +40,36 @@ export const SAVE_PLANT = gql`
   }
 `;
 
-export const REMOVE_PLANT = gql`
-  mutation removePlant($plantId: ID!) {
-    removePlant(plantId: $plantId) {
+export const REMOVE_PLANT = gql`mutation deletePlant($_id: String) {
+  deletePlant(_id: $_id){
+    _id
+  }
+}
+`;
+
+export const JON_PLANT = gql`
+mutation saveUserPlant($userID: String, $plantNickName: String, $plantName: String,
+  $plantLight: String,   $plantWater: String, $petFriendly: Boolean, 
+  $plantImage: String, $moreInfo: String, $waterFrequency: String,
+  $lastWater: String, $nextWater: String) {
+    saveUserPlant(userID: $userID, plantNickName: $plantNickName, plantName: $plantName
+    plantLight: $plantLight, plantWater: $plantWater, petFriendly: $petFriendly,
+    plantImage: $plantImage, moreInfo: $moreInfo, waterFrequency: $waterFrequency,
+    lastWater: $lastWater, nextWater: $nextWater) {
+      userID
       _id
-      username
-      email
-      savedPlants {
-        name
-        water
-        sun
-        pets
-      }
+      plantName
     }
   }
 `;
 
-export const JON_PLANT = gql`
-  mutation saveUserPlant($userID: String, $plantNickName: String, $plantName: String, $plantLight: String, $plantWater: String, $petFriendly: Boolean, $plantImage: String, $moreInfo: String){
-  saveUserPlant(userID: $userID, plantNickName: $plantNickName, plantName: $plantName, plantLight:$plantLight, plantWater: $plantWater, petFriendly: $petFriendly, plantImage: $plantImage, moreInfo: $moreInfo) {
-   	userID
-    plantNickName
+export const UPDATE_PLANT = gql`
+mutation watered($_id: String, $lastWater: String, $nextWater: String, $waterFrequency: String ) {
+  watered(_id: $_id, lastWater: $lastWater, nextWater: $nextWater, waterFrequency: $waterFrequency) {
+    _id
     plantName
-    plantLight
-    plantWater
-    petFriendly
-    plantImage
-    moreInfo
+    lastWater
+    nextWater
   }
 }
 `;
