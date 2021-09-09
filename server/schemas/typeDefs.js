@@ -51,7 +51,8 @@ const typeDefs = gql`
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     removeProfile: Profile
-    watered(_id: String, lastWater: String, nextWater: String, waterFrequency: String): Userplant   
+    watered(_id: String, lastWater: String, nextWater: String, waterFrequency: String): Userplant 
+    deletePlant(_id: String): Userplant  
   }
 `;
 

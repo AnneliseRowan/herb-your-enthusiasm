@@ -25,7 +25,9 @@ const SavedPlants = () => {
   
   const userData = data?.userplants || {};
 
+
   const user = Auth.getProfile()
+
 
   const handleDeletePlant = async (plantId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -36,7 +38,7 @@ const SavedPlants = () => {
 
     try {
       const { data } = await removePlant({
-        variables: { plantId },
+        variables: { _id: plantId }, 
       });
 
       // upon success, remove plants's id from localStorage
@@ -73,6 +75,7 @@ const SavedPlants = () => {
             ? `See Your Garden!`:
              'Uh-Oh, Hurry! Adopt some plants!'}
         </h2>
+
       </Container>
         <Row xs={1} md={2} lg={4} >
           {data.userplants?.map((plant) => (
