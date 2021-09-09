@@ -66,18 +66,13 @@ const resolvers = {
         return { token, userPlant };
       },
 
-      watered: async (_, { _id, lastWater, nextWater, waterFrequency }) => {
-        const userPlant = await Userplant.findOneAndUpdate( { _id });
-
-        if (!userPlant) {
-          throw new Error(`This is not the plant you are searching for`)
-        }
-
-        userPlant.lastWater = lastWater;
-        userPlant.nextWater = nextWater
-        
-        
-        return userPlant;
+      watered: async (parent, { _id, lastWater, nextWater, waterFrequency }) => {
+        const userPlant = await Userplant.findOneAndUpdate( { _id: _id}, {
+          lastWater,
+          nextWater
+        }, 
+        {new: true}
+        );
 
       },
   
