@@ -6,8 +6,10 @@ import {
   Card,
   Button,
   Row,
-  Col
+  Col,
+  Collapse
 } from 'react-bootstrap';
+import {Helmet} from 'react-helmet';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME, QUERY_USER_PLANT } from '../utils/queries';
@@ -27,6 +29,8 @@ const SavedPlants = () => {
 
 
   const user = Auth.getProfile()
+
+  // const [expandedId, setExpandedId] = React.useState(false, -1);
 
 
   const handleDeletePlant = async (plantId) => {
@@ -52,8 +56,16 @@ const SavedPlants = () => {
     return <h2>LOADING...</h2>;
   }
 
+  // const handleExpandClick = (e, i) => {
+  //   e.stopPropagation()
+  //   setExpandedId(expandedId === i ? -1 : i);
+  // };
+
   return (
     <>
+      <Helmet>
+        <style>{'body { background:repeating-linear-gradient(rgba(250,400,150,200),transparent);}'}</style>
+      </Helmet>
       <div>
           <div style={{
             backgroundColor: "#C2CAD0",
@@ -72,7 +84,7 @@ const SavedPlants = () => {
       <Container>
         <h2 style={{textAlign: "center", marginTop: "45px"}}>
           {userData.length        
-            ? `See Your Garden!`:
+            ? `See Your Garden, Make It Grow...`:
              'Uh-Oh, Hurry! Adopt some plants!'}
         </h2>
 
@@ -80,18 +92,26 @@ const SavedPlants = () => {
         <Row xs={1} md={2} lg={4} >
           {data.userplants?.map((plant) => (
             <Col key={plant._id}>
-              <Card  border="light" style={{width: "24rem", margin:"10px", padding: "0px 10px 0px 10px"}} id="cardSizing">
+              <Card  class="card" border="light" className="bg-warning" style={{width: "18rem", margin:"10px"}} id="cardSizing">
                 {plant.plantImage ? (
-                  <Card.Img style={{height:"36rem"}}
+                  <Card.Img style={{height:"20rem"}} className="border bottom border-dark"
                     src={plant.plantImage}
                     alt={`The image for ${plant.plantName}`}
                     variant="top"
                   />
                 ) : null}
-                <Card.Body>
-                  <Card.Title style={{fontFamily: 'Oleo Script, cursive', fontSize:"32px", textAlign:"center"}}>{plant.plantName}</Card.Title>
-                  <p className="medium">Sun: {plant.plantLight}</p>
-                  <p className="medium">Water: {plant.plantWater}</p>
+                <Card.Body
+                // onClick={e => handleExpandClick(e, i)}
+                // aria-controls="myPlantInfo"
+                // aria-expanded={expandedId === i}
+                >
+                  <Card.Title style={{fontFamily: 'Oleo Script, cursive', fontSize:"22px", textAlign:"center"}}>{plant.plantName}</Card.Title>
+                  {/* <Collapse in={expandedId === i}> */}
+                    {/* <div id="myPlantInfo"> */}
+                      <p className="medium"><b>Sun</b>: {plant.plantLight}</p>
+                      <p className="medium"><b>Water</b>: {plant.plantWater}</p>
+                    {/* </div> */}
+                  {/* </Collapse> */}
                   {/* <p className="medium">Pet-Friendly: {checkTrue(plant.petFriendly)}</p> */}
                   <Button
                     className="btn-block"
