@@ -135,6 +135,9 @@ const SearchPlants = () => {
                   onClick={e => handleExpandClick(e, i)}
                     aria-controls="plantInfo"
                     aria-expanded={expandedId === i}>
+                  <div id="HiddenTextTitle">
+                    <p id="HiddenText" align="center">Click for More Info</p>
+                  </div>
                   <Card.Title style={{fontFamily: 'Oleo Script, cursive', fontSize:"22px", textAlign:"center"}}>{plants.plantName}</Card.Title>
                   <Collapse in={expandedId === i}>
                     <div id="plantInfo">

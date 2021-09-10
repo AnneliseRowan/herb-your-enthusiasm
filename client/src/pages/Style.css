@@ -57,6 +57,20 @@ background-color: #bd5d38;
 	cursor: pointer;
 }
 
+#HiddenTextTitle {
+    /*just so we can see it*/
+    height: 50px;
+    width: 300px;
+}
+
+#HiddenText {
+	display: none;
+	
+}
+
+#HiddenTextTitle:hover #HiddentText {
+	display:inline
+}
 
 button {
 	display: block;
