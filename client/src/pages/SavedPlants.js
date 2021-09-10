@@ -10,17 +10,15 @@ import {
   Collapse
 } from 'react-bootstrap';
 import {Helmet} from 'react-helmet';
-
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME, QUERY_USER_PLANT } from '../utils/queries';
 import { REMOVE_PLANT, UPDATE_PLANT } from '../utils/mutations';
 import { removePlantId } from '../utils/localStorage';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import './Style.css'
-
 import Auth from '../utils/auth';
+import SearchPlants from './SearchPlants';
 
 const SavedPlants = () => {
   const { loading, data } = useQuery(QUERY_USER_PLANT);
@@ -31,6 +29,7 @@ const SavedPlants = () => {
 
   const userData = data?.userplants || {};
 
+  const [expandedId, setExpandedId] = React.useState(false, -1);
 
   const checkTrue = (thing) => {
     if (thing) {
@@ -40,7 +39,6 @@ const SavedPlants = () => {
   }
   const user = Auth.getProfile()
 
-  // const [expandedId, setExpandedId] = React.useState(false, -1);
   const handleWaterPlant = async (plantId2, waterFrequency) => {
     const waterSuccess = () => {
       toast("Hooray! Your plant is watered")
@@ -67,9 +65,7 @@ const SavedPlants = () => {
     catch (err) {
       console.error(err);
     }
-  }
-    ;
-
+  };
 
   const handleDeletePlant = async (plantId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -97,10 +93,10 @@ const SavedPlants = () => {
     return <h2>LOADING...</h2>;
   }
 
-  // const handleExpandClick = (e, i) => {
-  //   e.stopPropagation()
-  //   setExpandedId(expandedId === i ? -1 : i);
-  // };
+  const handleExpandClick = (e, i) => {
+    e.stopPropagation()
+    setExpandedId(expandedId === i ? -1 : i);
+  };
 
   return (
     <>
@@ -132,32 +128,39 @@ const SavedPlants = () => {
 
       </Container>
       <Row xs={1} md={2} lg={4} >
-        {data.userplants?.map((plant) => (
+        {data.userplants?.map((plant, i) => (
           <Col key={plant._id}>
             <Card class="card" border="light" className='bg-warning border-dark' style={{ width: "18rem", margin: "10px"}} id="cardSizing">
               {plant.plantImage ? (
                 <Card.Img style={{ height: "20rem" }}
+                  className="border-bottom border-dark"
                   src={plant.plantImage}
                   alt={`The image for ${plant.plantName}`}
                   variant="top"
                 />
               ) : null}
-              <Card.Body>
+              <Card.Body
+                onClick={e => handleExpandClick(e, i)}
+                    aria-controls="plantInfo"
+                    aria-expanded={expandedId === i}>
                 <Card.Title style={{ fontFamily: 'Oleo Script, cursive', fontSize: "22px", textAlign: "center" }}>{plant.plantName}</Card.Title>
-                <p className="medium"><b>Sun</b>: {plant.plantLight}</p>
-                <p className="medium"><b>Water</b>: {plant.plantWater}</p>
-                <p className="medium"><b>Last Watered</b>: {plant.lastWater}</p>
-                <p className="medium"><b>Next Watered</b>: {plant.nextWater}</p>
-
-                <p className="medium">Pet-Friendly: {checkTrue(plant.petFriendly)}</p>
+                <Collapse in={expandedId === i}>
+                  <div id="plantInfo">
+                <p className="medium"><b>Sun:</b> {plant.plantLight}</p>
+                <p className="medium"><b>Water:</b> {plant.plantWater}</p>
+                <p className="medium"><b>Last Watered:</b> {plant.lastWater}</p>
+                <p className="medium"><b>Next Watered:</b> {plant.nextWater}</p>
+                <p className="medium"><b>Pet-Friendly:</b> {checkTrue(plant.petFriendly)}</p>
+                  </div>
+                </Collapse>
                 <Button
-                  onClick={() => handleWaterPlant(plant._id, parseInt(plant.waterFrequency))}>
+                  onClick={e => handleWaterPlant(plant._id, parseInt(plant.waterFrequency), handleExpandClick(e))}>
                   Water Me!
                 </Button>
                 <Button
                   className="btn-block"
                   style={{ backgroundColor: "#88BDBC" }}
-                  onClick={() => handleDeletePlant(plant._id)}
+                  onClick={e => handleDeletePlant(plant._id, handleExpandClick(e))}
                 >
                   Adios Plant!
                 </Button>
