@@ -43,6 +43,7 @@ const SearchPlants = () => {
     };
     addSuccess();
     const token = Auth.loggedIn() ? Auth.getToken() : null;
+    
 
     jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plants.variables.plantName,
       plantLight: plants.plants.variables.plantLight, plantWater: plants.plants.variables.plantWater, petFriendly: plants.plants.variables.petFriendly,
