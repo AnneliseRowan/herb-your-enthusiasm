@@ -12,6 +12,8 @@ import {
   Collapse
 } from 'react-bootstrap';
 import {Helmet} from 'react-helmet';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 import { gql, useQuery, useMutation } from '@apollo/client';
@@ -26,7 +28,6 @@ import './Style.css'
 import plant from './plantData'; 
 
 const SearchPlants = () => {
-  console.log('render search plants')
   const { loading, data } = useQuery(QUERY_PLANT); 
     
   const [searchedPlants, setSearchedPlants] = useState([]);
