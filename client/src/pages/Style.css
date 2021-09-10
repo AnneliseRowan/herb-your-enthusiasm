@@ -111,3 +111,24 @@ a {
 	color: black; 
 
 }
+
+
+/* ipad */
+@media only screen and (max-width: 768px) and (min-width: 600px) {
+	#mainMessage {
+		font-size: 80px I !important;
+	}
+	#mainMessage #subMessage {
+		font-size: 60px;
+	}
+} 
+
+/* cellphone */
+@media only screen and (max-width: 731px) {
+	#mainMessage {
+		font-size: 60px !important; 
+	}
+	#mainMessage #subMessage {
+		font-size: 40px;
+	}
+}

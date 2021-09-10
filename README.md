@@ -10,7 +10,7 @@ Herb Your Enthusiasm is an application that let's you choose from a plant select
 
 * [Github Repository](https://github.com/AnneliseRowan/herb-your-enthusiasm)
 
-* [PowerPoint Presentation]()
+* [PowerPoint Presentation](https://docs.google.com/presentation/d/1X5d4LeNx26EZwlTToezmOKVmtw8DP8-LFU35_jefjqo/edit#slide=id.gdfc234873b_0_1936)
 
 ## User Stories
 
@@ -76,6 +76,10 @@ React Bootstrap
 CSS
 
 Toastify (NPM React Package)
+
+GraphQL
+
+Apollo
 
 ```
 
