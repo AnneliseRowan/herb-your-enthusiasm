@@ -27,6 +27,9 @@ import Auth from '../utils/auth';
 import './Style.css'
 import plant from './plantData'; 
 
+
+
+
 const SearchPlants = () => {
   const { loading, data } = useQuery(QUERY_PLANT); 
     
@@ -39,6 +42,12 @@ const SearchPlants = () => {
   // const [open, setOpen] = React.useState(false, -1);
 
   const [expandedId, setExpandedId] = React.useState(false, -1);
+
+
+  const doubleOnClick = (test) => {
+    console.log(`test test test`);
+    console.log('mic check 1,2, 1,2')
+  } 
 
   useEffect(() => {
     return () => savePlantIds(savedPlantIds);
@@ -59,8 +68,6 @@ const SearchPlants = () => {
 
   const [jonSavePlant, { data: savePlantData }] = useMutation(JON_PLANT)
   const user = Auth.getProfile()
-
-  console.log('userrrr? ', user)
 
 
   // create function to handle saving a plant to our user
@@ -84,13 +91,19 @@ const SearchPlants = () => {
     }
   };
 
+  
+
   if (loading) {
     return <h2>LOADING...</h2>;
   }
+  const waterSuccess = () => {
+    toast("Hooray! Your plant is watered")
+  };
 
 
   return ( 
     <>
+    <ToastContainer/>
 
       <Helmet>
         <style>{'body { background:linear-gradient(rgba(250,0,0,0.5),transparent); background-color: green; }'}</style>
@@ -140,14 +153,7 @@ const SearchPlants = () => {
                           (savedId) => savedId === plant.plantId
                           )}
                           className="btn-block btn-light" 
-                          onClick={() => jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plantName,
-                        plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
-                      plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: "", nextWater: "",
-                    waterFrequency: plants.waterFrequency},
-                    refetchQueries: [
-                      { query: QUERY_USER_PLANT}
-                    ]  })
-                      }
+                          onClick={() => doubleOnClick() }
                           >
                           {savedPlantIds?.some((savedId) => savedId === plant.plantId)
                             ? "It's ok he's already adopted"

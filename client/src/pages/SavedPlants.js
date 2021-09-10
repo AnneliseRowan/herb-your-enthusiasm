@@ -23,8 +23,6 @@ import Auth from '../utils/auth';
 const SavedPlants = () => {
   const { loading, data } = useQuery(QUERY_USER_PLANT);
 
-  console.log(data, 'raawwwrs')
-
   const [removePlant, { error }] = useMutation(REMOVE_PLANT);
 
   const [waterPlant, { error2 }] = useMutation(UPDATE_PLANT)
