@@ -55,7 +55,7 @@ const AppNavbar = () => {
         aria-labelledby='signup-modal'>
         {/* tab container to do either signup or login component */}
         <Tab.Container defaultActiveKey='login'>
-          <Modal.Header closeButton>
+          <Modal.Header >
             <Modal.Title id='signup-modal'>
               <Nav variant='pills'>
                 <Nav.Item>
