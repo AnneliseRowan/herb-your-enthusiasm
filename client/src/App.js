@@ -16,7 +16,6 @@ import SearchPlants from './pages/SearchPlants';
 import SavedPlants from './pages/SavedPlants';
 import Donate from './pages/Donate';
 import Navbar from './components/Navbar';
-import Jon from './pages/Jon'
 
 
 // Construct our main GraphQL API endpoint
@@ -55,7 +54,6 @@ function App() {
             <Route exact path="/search" component={SearchPlants} />
             <Route exact path="/saved" component={SavedPlants} />
             <Route exact path="/donate" component={Donate} />
-            <Route exact path="/Jon" component={Jon} />
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
         </>

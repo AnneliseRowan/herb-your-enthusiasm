@@ -12,6 +12,8 @@ import {
   Collapse
 } from 'react-bootstrap';
 import {Helmet} from 'react-helmet';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 import { gql, useQuery, useMutation } from '@apollo/client';
@@ -25,8 +27,10 @@ import Auth from '../utils/auth';
 import './Style.css'
 import plant from './plantData'; 
 
+
+
+
 const SearchPlants = () => {
-  console.log('render search plants')
   const { loading, data } = useQuery(QUERY_PLANT); 
     
   const [searchedPlants, setSearchedPlants] = useState([]);
@@ -39,7 +43,30 @@ const SearchPlants = () => {
 
   const [expandedId, setExpandedId] = React.useState(false, -1);
 
+
+  const plantObject = {
+
+  }
+
+
+  const doubleOnClick = (plants) => {
   
+    const addSuccess = () => {
+      toast.success(`You added ${plants.plants.variables.plantName} to your garden!!!!`)
+    };
+    addSuccess();
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+
+    jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plants.variables.plantName,
+      plantLight: plants.plants.variables.plantLight, plantWater: plants.plants.variables.plantWater, petFriendly: plants.plants.variables.petFriendly,
+    plantImage: plants.plants.variables.plantImage, moreInfo: plants.plants.variables.moreInfo, lastWater: "", nextWater: "",
+  waterFrequency: plants.plants.variables.waterFrequency},
+  refetchQueries: [
+    { query: QUERY_USER_PLANT}
+  ]  })
+  } 
+
 
   useEffect(() => {
     return () => savePlantIds(savedPlantIds);
@@ -61,8 +88,6 @@ const SearchPlants = () => {
 
   const [jonSavePlant, { data: savePlantData }] = useMutation(JON_PLANT)
   const user = Auth.getProfile()
-
-  console.log('userrrr? ', user)
 
 
   // create function to handle saving a plant to our user
@@ -86,13 +111,19 @@ const SearchPlants = () => {
     }
   };
 
+  
+
   if (loading) {
     return <h2>LOADING...</h2>;
   }
+  const waterSuccess = () => {
+    toast("Hooray! Your plant is watered")
+  };
 
 
   return ( 
     <>
+    <ToastContainer/>
 
       <Helmet>
         <style>{'body { background:repeating-linear-gradient(rgba(250,400,150,200),transparent);}'}</style>
@@ -137,14 +168,14 @@ const SearchPlants = () => {
                           (savedId) => savedId === plant.plantId
                           )}
                           className="btn-block btn-light" 
-            
-                          onClick={() => jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plantName,
+
+                          onClick={() => doubleOnClick( {plants: { variables: {userID: user.data._id, plantName: plants.plantName,
                         plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
                       plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: "", nextWater: "",
-                    waterFrequency: plants.waterFrequency},
-                    refetchQueries: [
-                      { query: QUERY_USER_PLANT}
-                    ]  })
+                    waterFrequency: plants.waterFrequency}}
+                          }
+                    
+                          ) 
                       }
                           >
                           {savedPlantIds?.some((savedId) => savedId === plant.plantId)
