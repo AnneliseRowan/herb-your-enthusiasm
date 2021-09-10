@@ -43,10 +43,27 @@ const SearchPlants = () => {
 
   const [expandedId, setExpandedId] = React.useState(false, -1);
 
+  const plantObject = {
 
-  const doubleOnClick = (test) => {
-    console.log(`test test test`);
-    console.log('mic check 1,2, 1,2')
+  }
+
+
+  const doubleOnClick = (plants) => {
+  
+    const addSuccess = () => {
+      toast.success(`You added ${plants.plants.variables.plantName} to your garden!!!!`)
+    };
+    addSuccess();
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+
+    jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plants.variables.plantName,
+      plantLight: plants.plants.variables.plantLight, plantWater: plants.plants.variables.plantWater, petFriendly: plants.plants.variables.petFriendly,
+    plantImage: plants.plants.variables.plantImage, moreInfo: plants.plants.variables.moreInfo, lastWater: "", nextWater: "",
+  waterFrequency: plants.plants.variables.waterFrequency},
+  refetchQueries: [
+    { query: QUERY_USER_PLANT}
+  ]  })
   } 
 
   useEffect(() => {
@@ -153,15 +170,13 @@ const SearchPlants = () => {
                           (savedId) => savedId === plant.plantId
                           )}
                           className="btn-block btn-light" 
-                          onClick={() => jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plantName,
+                          onClick={() => doubleOnClick( {plants: { variables: {userID: user.data._id, plantName: plants.plantName,
                         plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
                       plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: "", nextWater: "",
-                    waterFrequency: plants.waterFrequency},
-                    refetchQueries: [
-                      { query: QUERY_USER_PLANT}
-                    ]  } ,
+                    waterFrequency: plants.waterFrequency}}
+                          }
                     
-                    ), console.log('test') 
+                          ) 
                       }
                           >
                           {savedPlantIds?.some((savedId) => savedId === plant.plantId)
