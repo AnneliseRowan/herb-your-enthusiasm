@@ -136,16 +136,16 @@ const SavedPlants = () => {
       <Row xs={1} md={2} lg={4} >
         {data.userplants?.map((plant) => (
           <Col key={plant._id}>
-            <Card border="light" style={{ width: "24rem", margin: "10px", padding: "0px 10px 0px 10px" }} id="cardSizing">
+            <Card class="card" border="light" className='bg-warning border-dark' style={{ width: "18rem", margin: "10px"}} id="cardSizing">
               {plant.plantImage ? (
-                <Card.Img style={{ height: "36rem" }}
+                <Card.Img style={{ height: "20rem" }}
                   src={plant.plantImage}
                   alt={`The image for ${plant.plantName}`}
                   variant="top"
                 />
               ) : null}
               <Card.Body>
-                <Card.Title style={{ fontFamily: 'Oleo Script, cursive', fontSize: "32px", textAlign: "center" }}>{plant.plantName}</Card.Title>
+                <Card.Title style={{ fontFamily: 'Oleo Script, cursive', fontSize: "22px", textAlign: "center" }}>{plant.plantName}</Card.Title>
                 <p className="medium"><b>Sun</b>: {plant.plantLight}</p>
                 <p className="medium"><b>Water</b>: {plant.plantWater}</p>
                 <p className="medium"><b>Last Watered</b>: {plant.lastWater}</p>
