@@ -52,9 +52,11 @@ background-color: #bd5d38;
 
 .card:hover {
 	box-shadow: 8px 8px 8px rgb(56, 55, 54);
+	color:#bd5d38;
     transform:scale(1.1);
 	cursor: pointer;
 }
+
 
 button {
 	display: block;

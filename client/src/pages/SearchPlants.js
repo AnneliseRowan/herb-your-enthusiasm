@@ -14,21 +14,14 @@ import {
 import {Helmet} from 'react-helmet';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
 import { gql, useQuery, useMutation } from '@apollo/client';
 //import { useMutation } from '@apollo/client';
 import { SAVE_PLANT, JON_PLANT } from '../utils/mutations';
 import { QUERY_PLANT, QUERY_USER_PLANT } from '../utils/queries';
 import { savePlantIds, getSavedPlantIds } from '../utils/localStorage';
-
 import Auth from '../utils/auth';
-
 import './Style.css'
 import plant from './plantData'; 
-
-
-
 
 const SearchPlants = () => {
   const { loading, data } = useQuery(QUERY_PLANT); 
@@ -39,15 +32,9 @@ const SearchPlants = () => {
 
   const [savePlant, { error }] = useMutation(SAVE_PLANT);
 
-  // const [open, setOpen] = React.useState(false, -1);
-
   const [expandedId, setExpandedId] = React.useState(false, -1);
 
-
-  const plantObject = {
-
-  }
-
+  const plantObject = {}
 
   const doubleOnClick = (plants) => {
   
@@ -57,16 +44,13 @@ const SearchPlants = () => {
     addSuccess();
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-
     jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plants.variables.plantName,
       plantLight: plants.plants.variables.plantLight, plantWater: plants.plants.variables.plantWater, petFriendly: plants.plants.variables.petFriendly,
-    plantImage: plants.plants.variables.plantImage, moreInfo: plants.plants.variables.moreInfo, lastWater: "", nextWater: "",
-  waterFrequency: plants.plants.variables.waterFrequency},
-  refetchQueries: [
-    { query: QUERY_USER_PLANT}
-  ]  })
-  } 
-
+      plantImage: plants.plants.variables.plantImage, moreInfo: plants.plants.variables.moreInfo, lastWater: "", nextWater: "",
+      waterFrequency: plants.plants.variables.waterFrequency},
+      refetchQueries: [{ query: QUERY_USER_PLANT}]
+    })
+  }
 
   useEffect(() => {
     return () => savePlantIds(savedPlantIds);
@@ -79,16 +63,13 @@ const SearchPlants = () => {
     return `No`
   }
 
-
   const handleExpandClick = (e, i) => {
     e.stopPropagation()
     setExpandedId(expandedId === i ? -1 : i);
   };
 
-
   const [jonSavePlant, { data: savePlantData }] = useMutation(JON_PLANT)
   const user = Auth.getProfile()
-
 
   // create function to handle saving a plant to our user
   const handleSavePlant = async (plantId) => {
@@ -128,7 +109,7 @@ const SearchPlants = () => {
       <Helmet>
         <style>{'body { background:repeating-linear-gradient(rgba(250,400,150,200),transparent);}'}</style>
       </Helmet>
-      <Jumbotron fluid className="text-dark bg-light" style={{marginTop:"45px", border:'solid'}}>
+      <Jumbotron fluid className="text-dark bg-light" style={{marginTop:"45px", border:'solid', "backgroundImage": "url('https://images.unsplash.com/photo-1496309732348-3627f3f040ee?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')"}}>
 
         <Container>
           <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', color: 'green', fontSize: "72px"}}>Meet the Plants</h1>
@@ -138,25 +119,25 @@ const SearchPlants = () => {
         <Row xs={1} md={2} lg={4}>
           {data.plants.map((plants, i) => (
             <Col>
-              <Card class="card" key={plants._id} className="bg-warning" style={{width: "18rem", margin:"10px"}} id="cardSizing">
+              <Card class="card" key={plants._id} className="bg-warning" style={{width: "20rem", margin:"10px"}} id="cardSizing">
                 {plants.plantImage ? (
-                  <Card.Img style={{height:"20rem"}} className="border-bottom border-dark"
-                  src={plants.plantImage}
-                  alt={`The cover for ${plants.plantName}`}
-                  variant="top"
+                  <Card.Img style={{height:"20rem"}} 
+                    className="border-bottom border-dark"
+                    src={plants.plantImage}
+                    alt={`The cover for ${plants.plantName}`}
+                    variant="top"
                   />
                 ) : null}
                 <Card.Body
                   onClick={e => handleExpandClick(e, i)}
                     aria-controls="plantInfo"
                     aria-expanded={expandedId === i}>
-
                   <Card.Title style={{fontFamily: 'Oleo Script, cursive', fontSize:"22px", textAlign:"center"}}>{plants.plantName}</Card.Title>
                   <Collapse in={expandedId === i}>
                     <div id="plantInfo">
-                      <p className="medium"><b>Sun</b>: {plants.plantLight}</p>
-                      <p className="medium"><b>Water</b>: {plants.plantWater}</p>
-                      <p className="medium"><b>Pet-Friendly</b>: {checkTrue(plants.petFriendly)}</p>
+                      <p className="medium"><b>Sun:</b> {plants.plantLight}</p>
+                      <p className="medium"><b>Water:</b> {plants.plantWater}</p>
+                      <p className="medium"><b>Pet-Friendly:</b> {checkTrue(plants.petFriendly)}</p>
                     </div>
                   </Collapse>
                   {/* <Card.Text>{plants.plantLight}</Card.Text> */}
@@ -169,14 +150,11 @@ const SearchPlants = () => {
                           )}
                           className="btn-block btn-light" 
 
-                          onClick={() => doubleOnClick( {plants: { variables: {userID: user.data._id, plantName: plants.plantName,
-                        plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
-                      plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: "", nextWater: "",
-                    waterFrequency: plants.waterFrequency}}
+                          onClick={ e => doubleOnClick( {plants: { variables: {userID: user.data._id, plantName: plants.plantName,
+                            plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
+                            plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: "", nextWater: "",
+                            waterFrequency: plants.waterFrequency}}}, handleExpandClick(e)) 
                           }
-                    
-                          ) 
-                      }
                           >
                           {savedPlantIds?.some((savedId) => savedId === plant.plantId)
                             ? "It's ok he's already adopted"
