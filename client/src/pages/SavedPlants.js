@@ -37,6 +37,10 @@ const SavedPlants = () => {
     } else
       return `No`
   }
+
+  const todaysDate = () => {
+    return new Date().toDateString();
+  }
   const user = Auth.getProfile()
 
   const handleWaterPlant = async (plantId2, waterFrequency, plantName2) => {
@@ -124,6 +128,7 @@ const SavedPlants = () => {
         </div>
       </div>
       <Container>
+        <h1 style={{ textAlign: "center", marginTop: "45px" }}> Today's Date: {todaysDate()} </h1>
         <h2 style={{ textAlign: "center", marginTop: "45px" }}>
           {userData.length
             ? `See Your Garden, Make It Grow...` :
