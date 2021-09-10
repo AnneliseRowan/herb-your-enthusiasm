@@ -37,8 +37,8 @@ const SearchPlants = () => {
 
   const plantObject = {}
 
-  const doubleOnClick = (plants) => {
-  
+  const doubleOnClick = (e, plants) => {
+    e.stopPropagation();
     const addSuccess = () => {
       toast.success(`You added ${plants.plants.variables.plantName} to your garden!!!!`)
     };
@@ -153,10 +153,10 @@ const SearchPlants = () => {
                           )}
                           className="btn-block btn-light" 
 
-                          onClick={ e => doubleOnClick( {plants: { variables: {userID: user.data._id, plantName: plants.plantName,
+                          onClick={ e => doubleOnClick( e, {plants: { variables: {userID: user.data._id, plantName: plants.plantName,
                             plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
                             plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: "", nextWater: "",
-                            waterFrequency: plants.waterFrequency}}}, handleExpandClick(e)) 
+                            waterFrequency: plants.waterFrequency}}}) 
                           }
                           >
                           {savedPlantIds?.some((savedId) => savedId === plant.plantId)
