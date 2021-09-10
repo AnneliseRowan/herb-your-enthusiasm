@@ -136,7 +136,7 @@ const SavedPlants = () => {
       <Row xs={1} md={2} lg={4} >
         {data.userplants?.map((plant) => (
           <Col key={plant._id}>
-            <Card class="card" border="light" className='bg-warning' style={{ width: "18rem", margin: "10px"}} id="cardSizing">
+            <Card class="card" border="light" className='bg-warning border-dark' style={{ width: "18rem", margin: "10px"}} id="cardSizing">
               {plant.plantImage ? (
                 <Card.Img style={{ height: "20rem" }}
                   src={plant.plantImage}
