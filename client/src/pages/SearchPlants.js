@@ -153,7 +153,16 @@ const SearchPlants = () => {
                           (savedId) => savedId === plant.plantId
                           )}
                           className="btn-block btn-light" 
-                          onClick={() => doubleOnClick() }
+                          onClick={() => jonSavePlant( { variables: {userID: user.data._id, plantName: plants.plantName,
+                        plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
+                      plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: "", nextWater: "",
+                    waterFrequency: plants.waterFrequency},
+                    refetchQueries: [
+                      { query: QUERY_USER_PLANT}
+                    ]  } ,
+                    
+                    ), console.log('test') 
+                      }
                           >
                           {savedPlantIds?.some((savedId) => savedId === plant.plantId)
                             ? "It's ok he's already adopted"
