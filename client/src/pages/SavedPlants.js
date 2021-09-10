@@ -68,6 +68,10 @@ const SavedPlants = () => {
   };
 
   const handleDeletePlant = async (plantId) => {
+    const ripPlant = () => {
+      toast.error(`RIP plant`)
+    };
+    ripPlant();
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
