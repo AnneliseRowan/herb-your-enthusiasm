@@ -43,6 +43,7 @@ const SearchPlants = () => {
 
   const [expandedId, setExpandedId] = React.useState(false, -1);
 
+
   const plantObject = {
 
   }
@@ -66,6 +67,7 @@ const SearchPlants = () => {
   ]  })
   } 
 
+
   useEffect(() => {
     return () => savePlantIds(savedPlantIds);
   });
@@ -78,7 +80,8 @@ const SearchPlants = () => {
   }
 
 
-  const handleExpandClick = (i) => {
+  const handleExpandClick = (e, i) => {
+    e.stopPropagation()
     setExpandedId(expandedId === i ? -1 : i);
   };
 
@@ -123,37 +126,32 @@ const SearchPlants = () => {
     <ToastContainer/>
 
       <Helmet>
-        <style>{'body { background:linear-gradient(rgba(250,0,0,0.5),transparent); background-color: green; }'}</style>
+        <style>{'body { background:repeating-linear-gradient(rgba(250,400,150,200),transparent);}'}</style>
       </Helmet>
       <Jumbotron fluid className="text-dark bg-light" style={{marginTop:"45px", border:'solid'}}>
 
         <Container>
-          <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', color: 'green', fontSize: "72px"}}>Our Beautiful Plant Page</h1>
+          <h1 style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', color: 'green', fontSize: "72px"}}>Meet the Plants</h1>
+          {/* <p style={{textAlign: "center", fontFamily: 'Oleo Script, cursive', fontSize: "18px"}}>more to come...</p> */}
         </Container>
       </Jumbotron>
         <Row xs={1} md={2} lg={4}>
           {data.plants.map((plants, i) => (
-
             <Col>
-              <Card key={plants._id} className="bg-warning" border="solid purple" style={{width: "16rem", margin:"10px"}} id="cardSizing">
-
+              <Card class="card" key={plants._id} className="bg-warning" style={{width: "18rem", margin:"10px"}} id="cardSizing">
                 {plants.plantImage ? (
-                  <Card.Img style={{height:"14rem"}} className="border-bottom border-dark"
+                  <Card.Img style={{height:"20rem"}} className="border-bottom border-dark"
                   src={plants.plantImage}
                   alt={`The cover for ${plants.plantName}`}
                   variant="top"
                   />
                 ) : null}
-                <Card.Body>
+                <Card.Body
+                  onClick={e => handleExpandClick(e, i)}
+                    aria-controls="plantInfo"
+                    aria-expanded={expandedId === i}>
 
                   <Card.Title style={{fontFamily: 'Oleo Script, cursive', fontSize:"22px", textAlign:"center"}}>{plants.plantName}</Card.Title>
-                  <Button size="sm"
-                    onClick={() => handleExpandClick(i)}
-                    aria-controls="plantInfo"
-                    aria-expanded={expandedId === i}
-                  >
-                      Info
-                  </Button>
                   <Collapse in={expandedId === i}>
                     <div id="plantInfo">
                       <p className="medium"><b>Sun</b>: {plants.plantLight}</p>
@@ -170,6 +168,7 @@ const SearchPlants = () => {
                           (savedId) => savedId === plant.plantId
                           )}
                           className="btn-block btn-light" 
+
                           onClick={() => doubleOnClick( {plants: { variables: {userID: user.data._id, plantName: plants.plantName,
                         plantLight: plants.plantLight, plantWater: plants.plantWater, petFriendly: plants.petFriendly,
                       plantImage: plants.plantImage, moreInfo: plants.moreInfo, lastWater: "", nextWater: "",
@@ -181,7 +180,7 @@ const SearchPlants = () => {
                           >
                           {savedPlantIds?.some((savedId) => savedId === plant.plantId)
                             ? "It's ok he's already adopted"
-                            : 'Adopt this plant🌱'}
+                            : 'Adopt🌱'}
                         </Button>
                       </div>
                     </Row>
