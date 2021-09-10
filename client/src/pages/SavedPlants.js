@@ -27,9 +27,6 @@ const SavedPlants = () => {
     variables: {userID: user.data._id},
   });
 
-    console.log(user.data._id, 'here is use id')
-
-    console.log("data is here", data)
 
   const [removePlant, { error }] = useMutation(REMOVE_PLANT);
 
@@ -46,7 +43,8 @@ const SavedPlants = () => {
       return `No`
   }
 
-  const handleWaterPlant = async (plantId2, waterFrequency, plantName2) => {
+  const handleWaterPlant = async (e, plantId2, waterFrequency, plantName2) => { 
+    e.stopPropagation()   
     const waterSuccess = () => {
       toast(`Hooray! ${plantName2} is watered`)
     };
@@ -108,8 +106,8 @@ const SavedPlants = () => {
     return <h2>LOADING...</h2>;
   }
 
-  const handleExpandClick = (e, i) => {
-    e.stopPropagation()
+  const handleExpandClick = (e, i) => {    
+    e.stopPropagation();
     setExpandedId(expandedId === i ? -1 : i);
   };
 
@@ -169,13 +167,13 @@ const SavedPlants = () => {
                   </div>
                 </Collapse>
                 <Button
-                  onClick={e => handleWaterPlant(plant._id, parseInt(plant.waterFrequency), plant.plantName, handleExpandClick(e))}>
+                  onClick={e => handleWaterPlant(e, plant._id, parseInt(plant.waterFrequency), plant.plantName)}>
                   Water Me!
                 </Button>
                 <Button
                   className="btn-block"
                   style={{ backgroundColor: "#88BDBC" }}
-                  onClick={e => handleDeletePlant(plant._id, handleExpandClick(e))}
+                  onClick={e => handleDeletePlant(plant._id)}
                 >
                   Adios Plant!
                 </Button>
