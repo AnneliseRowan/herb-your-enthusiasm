@@ -6,8 +6,10 @@ import {
   Card,
   Button,
   Row,
-  Col
+  Col,
+  Collapse
 } from 'react-bootstrap';
+import {Helmet} from 'react-helmet';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME, QUERY_USER_PLANT } from '../utils/queries';
@@ -40,6 +42,7 @@ const SavedPlants = () => {
   }
   const user = Auth.getProfile()
 
+  // const [expandedId, setExpandedId] = React.useState(false, -1);
   const handleWaterPlant = async (plantId2, waterFrequency) => {
     const waterSuccess = () => {
       toast("Hooray! Your plant is watered")
@@ -96,8 +99,16 @@ const SavedPlants = () => {
     return <h2>LOADING...</h2>;
   }
 
+  // const handleExpandClick = (e, i) => {
+  //   e.stopPropagation()
+  //   setExpandedId(expandedId === i ? -1 : i);
+  // };
+
   return (
     <>
+      <Helmet>
+        <style>{'body { background:repeating-linear-gradient(rgba(250,400,150,200),transparent);}'}</style>
+      </Helmet>
       <div>
         <ToastContainer/>
         <div style={{
@@ -117,7 +128,7 @@ const SavedPlants = () => {
       <Container>
         <h2 style={{ textAlign: "center", marginTop: "45px" }}>
           {userData.length
-            ? `See Your Garden!` :
+            ? `See Your Garden, Make It Grow...` :
             'Uh-Oh, Hurry! Adopt some plants!'}
         </h2>
 
@@ -135,10 +146,10 @@ const SavedPlants = () => {
               ) : null}
               <Card.Body>
                 <Card.Title style={{ fontFamily: 'Oleo Script, cursive', fontSize: "32px", textAlign: "center" }}>{plant.plantName}</Card.Title>
-                <p className="medium">Sun: {plant.plantLight}</p>
-                <p className="medium">Water: {plant.plantWater}</p>
-                <p className="medium">Last Watered: {plant.lastWater}</p>
-                <p className="medium">Next Watered: {plant.nextWater}</p>
+                <p className="medium"><b>Sun</b>: {plant.plantLight}</p>
+                <p className="medium"><b>Water</b>: {plant.plantWater}</p>
+                <p className="medium"><b>Last Watered</b>: {plant.lastWater}</p>
+                <p className="medium"><b>Next Watered</b>: {plant.nextWater}</p>
 
                 <p className="medium">Pet-Friendly: {checkTrue(plant.petFriendly)}</p>
                 <Button
