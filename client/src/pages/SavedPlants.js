@@ -21,7 +21,15 @@ import Auth from '../utils/auth';
 import SearchPlants from './SearchPlants';
 
 const SavedPlants = () => {
-  const { loading, data } = useQuery(QUERY_USER_PLANT);
+  const user = Auth.getProfile()
+
+  const { loading, data } = useQuery(QUERY_USER_PLANT, { 
+    variables: {userID: user.data._id},
+  });
+
+    console.log(user.data._id, 'here is use id')
+
+    console.log("data is here", data)
 
   const [removePlant, { error }] = useMutation(REMOVE_PLANT);
 
@@ -37,7 +45,6 @@ const SavedPlants = () => {
     } else
       return `No`
   }
-  const user = Auth.getProfile()
 
   const handleWaterPlant = async (plantId2, waterFrequency, plantName2) => {
     const waterSuccess = () => {
@@ -58,7 +65,9 @@ const SavedPlants = () => {
       const { data2 } = await waterPlant({
         variables: { _id: plantId2, lastWater: water1.toDateString(), nextWater: water2.toDateString() },
         refetchQueries: [
-          { query: QUERY_USER_PLANT }
+          { query: QUERY_USER_PLANT,
+            variables:  {userID: user.data._id}
+          }
         ]
       })
     }
@@ -67,9 +76,9 @@ const SavedPlants = () => {
     }
   };
 
-  const handleDeletePlant = async (plantId, plantName) => {
+  const handleDeletePlant = async (plantId,) => {
     const ripPlant = () => {
-      toast.error(`RIP ${plantName}`)
+      toast.error(`RIP plant`)
     };
     ripPlant();
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -82,7 +91,9 @@ const SavedPlants = () => {
       const { data } = await removePlant({
         variables: { _id: plantId },
         refetchQueries: [
-          { query: QUERY_USER_PLANT }
+          { query: QUERY_USER_PLANT,
+            variables:  {userID: user.data._id}
+          }
         ]
       });
 
@@ -164,7 +175,7 @@ const SavedPlants = () => {
                 <Button
                   className="btn-block"
                   style={{ backgroundColor: "#88BDBC" }}
-                  onClick={e => handleDeletePlant(plant._id, plant.plantName, handleExpandClick(e))}
+                  onClick={e => handleDeletePlant(plant._id, handleExpandClick(e))}
                 >
                   Adios Plant!
                 </Button>

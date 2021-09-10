@@ -14,8 +14,8 @@ const resolvers = {
         return Plant.find({});
       },
       // double check this later when it's working
-      userplants: async () => {
-        return Userplant.find({})
+      userplants: async (parent, { userID}) => {
+        return Userplant.find({userID: userID})
       },
   
       profile: async (parent, { profileId }) => {
