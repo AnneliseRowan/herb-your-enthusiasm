@@ -39,6 +39,8 @@ const SearchPlants = () => {
 
   const [expandedId, setExpandedId] = React.useState(false, -1);
 
+  
+
   useEffect(() => {
     return () => savePlantIds(savedPlantIds);
   });
