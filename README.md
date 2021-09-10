@@ -10,7 +10,7 @@ Herb Your Enthusiasm is an application that let's you choose from a plant select
 
 * [Github Repository](https://github.com/AnneliseRowan/herb-your-enthusiasm)
 
-* [PowerPoint Presentation]()
+* [PowerPoint Presentation](https://docs.google.com/presentation/d/1X5d4LeNx26EZwlTToezmOKVmtw8DP8-LFU35_jefjqo/edit#slide=id.gdfc234873b_0_1936)
 
 ## User Stories
 
@@ -27,31 +27,28 @@ Herb Your Enthusiasm is an application that let's you choose from a plant select
 
 ### This is the welcome page of Herb-Your-Enthusiasm.
 
-![welcome-page]()
+![welcome-page](./Assets/welcomepage.png)
 
 ### This is the login modal that will popup when you click login
 
-![login-modal]()
+![login-modal](./Assets/loginmodal.png)
 
-### Once you login, your navigation bar gives you access to other parts of the site including the donations page and your plant library
-
-![nav-bar]()
 
 ### You can browse our current plants to choose one or many to adopt
 
-![plant-database]()
+![plant-database](./Assets/plantFamily.png)
 
 ### The user profile page presents with a picture and welcome sign
 
-![profile-page]()
-
-### A list of cards is shown of the adopted plants
-
-![user-plants]()
+![profile-page](./Assets/userpage.png)
 
 ### Notifications are sent depending on what plants are added to the garden
 
-![notifications]()
+![notifications](./Assets/notification.png)
+
+### A donation page if you are feeling so inclined :)
+
+![donation-page](./Assets/donationpage.png)
 
 
 ## Technology Used
@@ -76,6 +73,10 @@ React Bootstrap
 CSS
 
 Toastify (NPM React Package)
+
+GraphQL
+
+Apollo
 
 ```
 
