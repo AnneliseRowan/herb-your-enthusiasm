@@ -17,7 +17,7 @@ const typeDefs = gql`
     profile(profileId: ID!): Profile    
     me: Profile
     plants: [Plant]!
-    userplants: [Userplant]! 
+    userplants(userID: String): [Userplant]! 
   }
   type Plant {
     _id: ID

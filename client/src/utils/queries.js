@@ -32,9 +32,8 @@ export const QUERY_PLANT = gql`
 `;
 
 export const QUERY_USER_PLANT = gql`
-  query userplants {
-    
-    userplants{
+  query userplants($userID: String) {    
+    userplants(userID: $userID){
       _id
       userID
       plantNickName
@@ -48,5 +47,5 @@ export const QUERY_USER_PLANT = gql`
       lastWater
       nextWater
     } 
-  }
+}
 `;

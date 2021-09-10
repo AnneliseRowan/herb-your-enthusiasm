@@ -24,6 +24,7 @@ import './Style.css'
 import plant from './plantData'; 
 
 const SearchPlants = () => {
+  const user = Auth.getProfile()
   const { loading, data } = useQuery(QUERY_PLANT); 
     
   const [searchedPlants, setSearchedPlants] = useState([]);
@@ -48,7 +49,10 @@ const SearchPlants = () => {
       plantLight: plants.plants.variables.plantLight, plantWater: plants.plants.variables.plantWater, petFriendly: plants.plants.variables.petFriendly,
       plantImage: plants.plants.variables.plantImage, moreInfo: plants.plants.variables.moreInfo, lastWater: "", nextWater: "",
       waterFrequency: plants.plants.variables.waterFrequency},
-      refetchQueries: [{ query: QUERY_USER_PLANT}]
+      refetchQueries: [{ query: QUERY_USER_PLANT,
+        variables:  {userID: user.data._id}
+      }
+    ]
     })
   }
 
@@ -69,7 +73,6 @@ const SearchPlants = () => {
   };
 
   const [jonSavePlant, { data: savePlantData }] = useMutation(JON_PLANT)
-  const user = Auth.getProfile()
 
   // create function to handle saving a plant to our user
   const handleSavePlant = async (plantId) => {
