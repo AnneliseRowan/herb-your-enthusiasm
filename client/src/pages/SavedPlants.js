@@ -173,7 +173,7 @@ const SavedPlants = () => {
                 <Button
                   className="btn-block"
                   style={{ backgroundColor: "#88BDBC" }}
-                  onClick={e => handleDeletePlant(plant._id)}
+                  onClick={e => handleDeletePlant(plant._id, handleExpandClick(e))}
                 >
                   Adios Plant!
                 </Button>
