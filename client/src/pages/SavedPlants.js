@@ -39,9 +39,9 @@ const SavedPlants = () => {
   }
   const user = Auth.getProfile()
 
-  const handleWaterPlant = async (plantId2, waterFrequency) => {
+  const handleWaterPlant = async (plantId2, waterFrequency, plantName2) => {
     const waterSuccess = () => {
-      toast("Hooray! Your plant is watered")
+      toast(`Hooray! ${plantName2} is watered`)
     };
     waterSuccess();
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -67,9 +67,9 @@ const SavedPlants = () => {
     }
   };
 
-  const handleDeletePlant = async (plantId) => {
+  const handleDeletePlant = async (plantId, plantName) => {
     const ripPlant = () => {
-      toast.error(`RIP plant`)
+      toast.error(`RIP ${plantName}`)
     };
     ripPlant();
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -158,13 +158,13 @@ const SavedPlants = () => {
                   </div>
                 </Collapse>
                 <Button
-                  onClick={e => handleWaterPlant(plant._id, parseInt(plant.waterFrequency), handleExpandClick(e))}>
+                  onClick={e => handleWaterPlant(plant._id, parseInt(plant.waterFrequency), plant.plantName, handleExpandClick(e))}>
                   Water Me!
                 </Button>
                 <Button
                   className="btn-block"
                   style={{ backgroundColor: "#88BDBC" }}
-                  onClick={e => handleDeletePlant(plant._id, handleExpandClick(e))}
+                  onClick={e => handleDeletePlant(plant._id, plant.plantName, handleExpandClick(e))}
                 >
                   Adios Plant!
                 </Button>
