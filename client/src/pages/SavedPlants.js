@@ -140,7 +140,9 @@ const SavedPlants = () => {
         </div>
       </div>
       <Container>
+        <h2 style={{ textAlign: "center", marginTop: "45px" }}>Today's Date is: {new Date().toDateString()}</h2>
         <h2 style={{ textAlign: "center", marginTop: "45px" }}>
+        
           {userData.length
             ? `See Your Garden, Make It Grow...` :
             'Uh-Oh, Hurry! Adopt some plants!'}
