@@ -46,8 +46,7 @@ const SignupForm = () => {
     try {
       const { data } = await addProfile({
         variables: { ...userFormData },
-      });
-      console.log(data);
+      });      
       Auth.login(data.addProfile.token);
     } catch (err) {
       console.error(err);

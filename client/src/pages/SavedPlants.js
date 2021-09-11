@@ -19,6 +19,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import './Style.css'
 import Auth from '../utils/auth';
 import SearchPlants from './SearchPlants';
+import { waterCheck } from '../components/waterCheck';
+
 
 const SavedPlants = () => {
   const user = Auth.getProfile()
@@ -26,6 +28,10 @@ const SavedPlants = () => {
   const { loading, data } = useQuery(QUERY_USER_PLANT, { 
     variables: {userID: user.data._id},
   });
+
+//   const waterNeeded = () => {
+//     toast(`The Red Button Means Your Babies are Thirsty`)
+// }
 
 
   const [removePlant, { error }] = useMutation(REMOVE_PLANT);
@@ -42,6 +48,7 @@ const SavedPlants = () => {
     } else
       return `No`
   }
+
 
   const handleWaterPlant = async (e, plantId2, waterFrequency, plantName2) => { 
     e.stopPropagation()   
@@ -115,7 +122,7 @@ const SavedPlants = () => {
     <>
       <Helmet>
         <style>{'body { background:repeating-linear-gradient(rgba(250,400,150,200),transparent);}'}</style>
-      </Helmet>
+      </Helmet>      
       <div>
         <ToastContainer/>
         <div style={{
@@ -164,10 +171,12 @@ const SavedPlants = () => {
                 <p className="medium"><b>Last Watered:</b> {plant.lastWater}</p>
                 <p className="medium"><b>Next Watered:</b> {plant.nextWater}</p>
                 <p className="medium"><b>Pet-Friendly:</b> {checkTrue(plant.petFriendly)}</p>
-                  </div>
+                  </div>                  
                 </Collapse>
                 <Button
-                  onClick={e => handleWaterPlant(e, plant._id, parseInt(plant.waterFrequency), plant.plantName)}>
+                style={waterCheck(plant.nextWater, plant.plantName, plant._id)}
+                  id={`wtr${plant._id}`}
+                  onClick={e => handleWaterPlant(e, plant._id, parseInt(plant.waterFrequency), plant.plantName)} >
                   Water Me!
                 </Button>
                 <Button
