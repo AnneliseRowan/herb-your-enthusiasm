@@ -26,6 +26,8 @@ import plant from './plantData';
 const SearchPlants = () => {
   const user = Auth.getProfile()
   const { loading, data } = useQuery(QUERY_PLANT); 
+
+  const userData = data?.plants || [];
     
   const [searchedPlants, setSearchedPlants] = useState([]);
 
@@ -82,7 +84,7 @@ const SearchPlants = () => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
-      return false;
+      return (false);
     }
 
     try {
