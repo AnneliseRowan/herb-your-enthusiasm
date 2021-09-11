@@ -48,7 +48,7 @@ Herb Your Enthusiasm is an application that let's you choose from a plant select
 
 ### A donation page if you are feeling so inclined :)
 
-![donation-page](./Assets/donationpage.png)
+![donation-page](./Assets/donatepage.png)
 
 
 ## Technology Used
