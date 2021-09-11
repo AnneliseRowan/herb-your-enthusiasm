@@ -64,12 +64,13 @@ background-color: #bd5d38;
 }
 
 #HiddenText {
-	display: none;
-	
+	color: black;
+	display:none;
 }
 
 #HiddenTextTitle:hover #HiddentText {
-	display:inline
+	display:block;
+	color:black;
 }
 
 button {
