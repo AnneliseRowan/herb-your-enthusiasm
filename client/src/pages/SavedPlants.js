@@ -81,11 +81,11 @@ const SavedPlants = () => {
     }
   };
 
-  const handleDeletePlant = async (plantId,) => {
-    const ripPlant = () => {
-      toast.error(`RIP plant`)
+  const handleDeletePlant = async (plantId, thing2) => {
+    const ripPlant = (thing2) => {
+      toast.error(`RIP ${thing2}`)
     };
-    ripPlant();
+    ripPlant(thing2);
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -183,7 +183,7 @@ const SavedPlants = () => {
                 </Button>
                 <Button
                   style={{ backgroundColor: "#88BDBC" }}
-                  onClick={e => handleDeletePlant(plant._id, handleExpandClick(e))}
+                  onClick={e => handleDeletePlant(plant._id, plant.plantName, handleExpandClick(e))}
                 >
                   Adios Plant!
                 </Button>
