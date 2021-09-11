@@ -180,7 +180,6 @@ const SavedPlants = () => {
                   Water Me!
                 </Button>
                 <Button
-                  className="btn-block"
                   style={{ backgroundColor: "#88BDBC" }}
                   onClick={e => handleDeletePlant(plant._id, handleExpandClick(e))}
                 >
